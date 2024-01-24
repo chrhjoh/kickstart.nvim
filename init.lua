@@ -266,8 +266,11 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {})
+
+require "custom.configs.bufferline-config"
+require "custom.configs.neotree-config"
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -390,15 +393,22 @@ end
 vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
+vim.keymap.set('n', '<leader>b?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>bf', require('telescope.builtin').buffers, { desc = '[f] Find existing buffers' })
+vim.keymap.set('n', '<leader>bs', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
     previewer = false,
   })
-end, { desc = '[/] Fuzzily search in current buffer' })
+end, { desc = '[s] Fuzzily [S]earch in current buffer' })
+
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', {desc= '[n] Change to [N]ext buffer'} )
+vim.keymap.set('n', '<leader>bp', ':bnext<CR>', {desc= '[p] Change to [P]revious buffer'} )
+
+vim.keymap.set('n', '<leader>tt', ':Neotree<CR>', {desc= '[t] Toogle [T]ree view'} )
+vim.keymap.set('n', '<leader>tc', ':Neotree close<CR>', {desc= '[c] [C]lose Neotree view'} )
+
 
 local function telescope_live_grep_open_files()
   require('telescope.builtin').live_grep {
