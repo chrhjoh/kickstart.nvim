@@ -188,12 +188,11 @@ require('lazy').setup({
       end,
     },
   },
-  {
-    "folke/tokyonight.nvim",
-    name = "tokyonight",
+  { "catppuccin/nvim", 
+    name = "catppuccin", 
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme "tokyonight-moon"
+      vim.cmd.colorscheme  "catppuccin-mocha"
     end,
   },
 
