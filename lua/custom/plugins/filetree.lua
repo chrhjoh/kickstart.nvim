@@ -13,8 +13,9 @@ return {
     require('neo-tree').setup({
     window = {
     mappings = {
-      ['<space>'] = "none"    
-        },
+      ['<space>'] = "none",    
+      ["gy"] = "git_unstage_file",  
+    },
   },
     })
   end,

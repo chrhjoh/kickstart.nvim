@@ -189,11 +189,11 @@ require('lazy').setup({
     },
   },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "folke/tokyonight.nvim",
+    name = "tokyonight",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme "catppuccin"
+      vim.cmd.colorscheme "tokyonight-moon"
     end,
   },
 
@@ -404,11 +404,13 @@ end, { desc = '[s] Fuzzily [S]earch in current buffer' })
 
 vim.keymap.set('n', '<leader>bn', ':bnext<CR>', {desc= '[n] Change to [N]ext buffer'} )
 vim.keymap.set('n', '<leader>bp', ':bnext<CR>', {desc= '[p] Change to [P]revious buffer'} )
+vim.keymap.set('n', '<leader>tg', ':Neotree float git_status<CR>', {desc= '[g] Toogle Tree [G]it status view'} )
 
 vim.keymap.set('n', '<leader>tt', ':Neotree<CR>', {desc= '[t] Toogle [T]ree view'} )
 vim.keymap.set('n', '<leader>tc', ':Neotree close<CR>', {desc= '[c] [C]lose Neotree view'} )
 
-
+vim.keymap.set('n', '<leader>do', ':DiffviewOpen<CR>')
+vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>')
 local function telescope_live_grep_open_files()
   require('telescope.builtin').live_grep {
     grep_open_files = true,
