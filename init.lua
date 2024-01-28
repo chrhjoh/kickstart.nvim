@@ -88,7 +88,14 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',
+       opts = { notification = {
+          window = {
+            winblend = 0,
+            },
+          },
+        },
+      },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -193,8 +200,52 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       vim.cmd.colorscheme  "catppuccin-mocha"
+      require("catppuccin").setup({
+        integrations = {
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        notify = false,
+        markdown = true,
+        mason = false,
+        neotree = false,
+        mini = {
+          enabled = true,
+          indentscope_color = "",
+        },
+        indent_blankline = {
+          enabled = true,
+          scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
+          colored_indent_levels = false,
+        },
+        telescope = {
+          enabled = true,
+          -- style = "nvchad"
+        },
+        which_key = false
+      },
+    })
     end,
   },
+native_lsp = {
+    enabled = true,
+    virtual_text = {
+        errors = { "italic" },
+        hints = { "italic" },
+        warnings = { "italic" },
+        information = { "italic" },
+    },
+    underlines = {
+        errors = { "underline" },
+        hints = { "underline" },
+        warnings = { "underline" },
+        information = { "underline" },
+    },
+    inlay_hints = {
+        background = true,
+    },
+},
 
   {
     -- Set lualine as statusline
@@ -203,7 +254,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'catppuccin',
         component_separators = '|',
         section_separators = '',
       },
