@@ -83,15 +83,17 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true, opts = {ensure_installed = {"debugpy"}} },
+      { 'williamboman/mason.nvim', config = true, opts = { ensure_installed = { "debugpy" } } },
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',
-       opts = { notification = {
-          window = {
-            winblend = 0,
+      {
+        'j-hui/fidget.nvim',
+        opts = {
+          notification = {
+            window = {
+              winblend = 0,
             },
           },
         },
@@ -120,7 +122,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -195,57 +197,58 @@ require('lazy').setup({
       end,
     },
   },
-  { "catppuccin/nvim", 
-    name = "catppuccin", 
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme  "catppuccin-mocha"
+      vim.cmd.colorscheme "catppuccin-mocha"
       require("catppuccin").setup({
         integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        notify = false,
-        markdown = true,
-        mason = false,
-        neotree = false,
-        mini = {
-          enabled = true,
-          indentscope_color = "",
+          cmp = true,
+          gitsigns = true,
+          nvimtree = true,
+          treesitter = true,
+          notify = false,
+          markdown = true,
+          mason = false,
+          neotree = false,
+          mini = {
+            enabled = true,
+            indentscope_color = "",
+          },
+          indent_blankline = {
+            enabled = true,
+            scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
+            colored_indent_levels = false,
+          },
+          telescope = {
+            enabled = true,
+            -- style = "nvchad"
+          },
+          which_key = false
         },
-        indent_blankline = {
-          enabled = true,
-          scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
-          colored_indent_levels = false,
-        },
-        telescope = {
-          enabled = true,
-          -- style = "nvchad"
-        },
-        which_key = false
-      },
-    })
+      })
     end,
   },
-native_lsp = {
+  native_lsp = {
     enabled = true,
     virtual_text = {
-        errors = { "italic" },
-        hints = { "italic" },
-        warnings = { "italic" },
-        information = { "italic" },
+      errors = { "italic" },
+      hints = { "italic" },
+      warnings = { "italic" },
+      information = { "italic" },
     },
     underlines = {
-        errors = { "underline" },
-        hints = { "underline" },
-        warnings = { "underline" },
-        information = { "underline" },
+      errors = { "underline" },
+      hints = { "underline" },
+      warnings = { "underline" },
+      information = { "underline" },
     },
     inlay_hints = {
-        background = true,
+      background = true,
     },
-},
+  },
 
   {
     -- Set lualine as statusline
@@ -452,12 +455,12 @@ vim.keymap.set('n', '<leader>bs', function()
   })
 end, { desc = '[s] Fuzzily [S]earch in current buffer' })
 
-vim.keymap.set('n', '<leader>bn', ':bnext<CR>', {desc= '[n] Change to [N]ext buffer'} )
-vim.keymap.set('n', '<leader>bp', ':bnext<CR>', {desc= '[p] Change to [P]revious buffer'} )
-vim.keymap.set('n', '<leader>tg', ':Neotree float git_status<CR>', {desc= '[g] Toogle Tree [G]it status view'} )
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = '[n] Change to [N]ext buffer' })
+vim.keymap.set('n', '<leader>bp', ':bnext<CR>', { desc = '[p] Change to [P]revious buffer' })
+vim.keymap.set('n', '<leader>tg', ':Neotree float git_status<CR>', { desc = '[g] Toogle Tree [G]it status view' })
 
-vim.keymap.set('n', '<leader>tt', ':Neotree<CR>', {desc= '[t] Toogle [T]ree view'} )
-vim.keymap.set('n', '<leader>tc', ':Neotree close<CR>', {desc= '[c] [C]lose Neotree view'} )
+vim.keymap.set('n', '<leader>tt', ':Neotree<CR>', { desc = '[t] Toogle [T]ree view' })
+vim.keymap.set('n', '<leader>tc', ':Neotree close<CR>', { desc = '[c] [C]lose Neotree view' })
 
 vim.keymap.set('n', '<leader>do', ':DiffviewOpen<CR>')
 vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>')
@@ -582,7 +585,7 @@ local on_attach = function(_, bufnr)
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
-
+  vim.keymap.set('i', '<C->', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
@@ -692,7 +695,7 @@ cmp.setup {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete {},
+    ['<C-s>'] = cmp.mapping.complete {},
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
