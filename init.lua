@@ -309,7 +309,6 @@ require('lazy').setup({
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
-  require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.debug',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -462,8 +461,8 @@ vim.keymap.set('n', '<leader>tg', ':Neotree float git_status<CR>', { desc = '[g]
 vim.keymap.set('n', '<leader>tt', ':Neotree<CR>', { desc = '[t] Toogle [T]ree view' })
 vim.keymap.set('n', '<leader>tc', ':Neotree close<CR>', { desc = '[c] [C]lose Neotree view' })
 
-vim.keymap.set('n', '<leader>do', ':DiffviewOpen<CR>')
-vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>')
+vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', {desc = "[D]iffview Open"})
+vim.keymap.set('n', '<leader>gc', ':DiffviewClose<CR>', {desc = "Diffview [C]lose"})
 local function telescope_live_grep_open_files()
   require('telescope.builtin').live_grep {
     grep_open_files = true,
@@ -610,6 +609,7 @@ require('which-key').register {
   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
   ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+  ['<leader>b'] = { name = '[B]uffers', _ = 'which_key_ignore' },
 }
 -- register which-key VISUAL mode
 -- required for visual <leader>hs (hunk stage) to work
@@ -637,7 +637,6 @@ local servers = {
   jsonls = {},
   marksman = {},
   r_language_server = {},
-  sqlls = {},
   yamlls = {},
   lua_ls = {
     Lua = {
@@ -674,7 +673,8 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-
+-- Setup problematic servers
+require 'lspconfig'.sqlls.setup { root_dir = function() return vim.loop.cwd() end, }
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require 'cmp'
