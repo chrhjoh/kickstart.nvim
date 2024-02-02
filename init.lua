@@ -456,10 +456,10 @@ end, { desc = '[s] Fuzzily [S]earch in current buffer' })
 
 vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = '[n] Change to [N]ext buffer' })
 vim.keymap.set('n', '<leader>bp', ':bnext<CR>', { desc = '[p] Change to [P]revious buffer' })
-vim.keymap.set('n', '<leader>tg', ':Neotree float git_status<CR>', { desc = '[g] Toogle Tree [G]it status view' })
+vim.keymap.set('n', '<leader>tg', ':Neotree git_status<CR>', { desc = '[g] Toogle Tree [G]it status view' })
 
 vim.keymap.set('n', '<leader>tt', ':Neotree<CR>', { desc = '[t] Toogle [T]ree view' })
-vim.keymap.set('n', '<leader>tc', ':Neotree close<CR>', { desc = '[c] [C]lose Neotree view' })
+vim.keymap.set('n', '<leader>tB', ':Neotree<CR>', { desc = '[B] Toogle [B]uffer tree view' })
 
 vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', {desc = "[D]iffview Open"})
 vim.keymap.set('n', '<leader>gc', ':DiffviewClose<CR>', {desc = "Diffview [C]lose"})
