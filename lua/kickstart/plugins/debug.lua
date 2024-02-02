@@ -81,7 +81,15 @@ return {
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
-
+    dap.configurations.python = {
+      {
+        type = 'python', -- the type here established the link to the adapter definition: `dap.adapters.python`
+        request = 'launch',
+        name = "Launch file from current workding directory",
+        cwd = vim.fn.getcwd(),
+        program = "${file}", -- This configuration will launch the current file if used.
+      }
+    }
     -- Install golang specific config
     require('dap-go').setup()
     require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
