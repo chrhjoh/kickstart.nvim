@@ -633,7 +633,22 @@ require('mason-lspconfig').setup()
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  pyright = {},
+  pyright = {
+    python = {
+      analysis = {
+        diagnosticSeverityOverrides = {
+          reportInvalidTypeArguments="warning",
+          reportArgumentType="information",
+          reportGeneralTypeIssues="information",
+          reportReturnType="information",
+          reportIncompatibleMethodOverride="information",
+          reportIncompatibleVariableOverride="warning",
+          reportPossiblyUnboundVariable="warning"
+        },
+        typeCheckingMode = "basic"
+      },
+    }
+  },
   bashls = {},
   jsonls = {},
   marksman = {},
@@ -675,7 +690,7 @@ mason_lspconfig.setup_handlers {
   end,
 }
 -- Setup problematic servers
-require 'lspconfig'.sqlls.setup { root_dir = function() return vim.loop.cwd() end, }
+require 'lspconfig'.sqlls.setup {root_dir = function() return vim.loop.cwd() end, }
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require 'cmp'
