@@ -575,7 +575,8 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  
+  require'lsp_signature'.on_attach()
+
   if client.name ~= 'pyright' then
   -- See `:help K` for why this keymap
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
