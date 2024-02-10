@@ -584,7 +584,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('i', '<C->', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
 
   end
-  if client.name ~= 'pylsp' then
+  if client.name ~= 'jedi_language_server' then
     -- Lesser used LSP functionality
     nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
     nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
@@ -613,7 +613,7 @@ local on_attach = function(client, bufnr)
     client.server_capabilities.signatureHelpProvider = false
   end
 
-  if client.name == 'pylsp' then
+  if client.name == 'jedi_language_server' then
     client.server_capabilities.completionProvider = false
   end
 end
@@ -669,37 +669,7 @@ local servers = {
       },
     },
   },
-    pylsp = {
-    plugins = {
-      autopep8 = {
-        enabled = false
-      },
-      jedi_completion = {
-        enabled = true
-      },
-      jedi_definition = {
-        enabled = true
-      },
-      jedi_references = {
-        enabled = false
-      },
-      jedi_symbols = {
-        enabled = false
-      },
-      mccabe = {
-        enabled = false
-      },
-      pydocstyle = {
-        enabled = false
-      },
-      pyflakes = {
-        enabled = false
-      },
-      yapf = {
-        enabled = false
-      }
-    },
-  },
+  jedi_language_server = {},
   bashls = {},
   jsonls = {},
   marksman = {},
