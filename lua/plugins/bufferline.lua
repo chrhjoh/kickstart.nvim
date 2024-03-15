@@ -10,9 +10,9 @@ return {
         styles = { "italic", "bold" },
         custom = {
           mocha = {
-            fill = { bg = "#1e1e2e" },
-            hint = {bg = "#1e1e2e", fg = "#cdd6f4"},
-            info = {bg = "#1e1e2e", fg = "#cdd6f4"}
+            fill = { bg = "#181825" },
+            hint = {bg = "#181825", fg = "#6c7086"},
+            info = {bg = "#181825", fg = "#6c7086"}
 
           }, 
         },
@@ -25,7 +25,7 @@ return {
           reveal = {'close'}
         },
         diagnostics="nvim_lsp",
-        always_show_bufferline=true,
+        always_show_bufferline=false,
         diagnostics_indicator = function(count, level)
           local icon = ""
           if level == 'error' or level == 'warning' then
