@@ -57,7 +57,6 @@ return{
             button("s",  "  > Restore session", ":SessionRestore <CR>"),
             button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
             button( "f", "  > Find file", ":Telescope find_files<CR>"),
-            button( "p", "  > Open Projects"   , ":Telescope projects<CR>"),
             button( "r", "  > Open Recent Files"   , ":Telescope oldfiles<CR>"),
             button( "t", "  > Open File Tree", ":Neotree<CR>"),
             button( "u", "󰂖  > Update Plugins", ":Lazy update<CR>"),
@@ -97,10 +96,9 @@ return{
         dashboard.config.layout = {
             { type = "padding", val = 2 },
             dashboard.section.header,
-            { type = "padding", val = 2 },
             dashboard.section.buttons,
             dashboard.section.footer,
-            { type = "padding", val = 8 },
+            { type = "padding", val = 1 },
             {type = "text", val = terminal_cat, opts = {hl='AlphaHeader', position = 'center'}}
         }
         alpha.setup(dashboard.opts)                                        
