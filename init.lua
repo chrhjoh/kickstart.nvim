@@ -205,6 +205,7 @@ require('lazy').setup({
       vim.cmd.colorscheme "catppuccin-mocha"
       require("catppuccin").setup({
         integrations = {
+          alpha = true,
           cmp = true,
           gitsigns = true,
           nvimtree = true,
