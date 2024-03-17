@@ -17,18 +17,6 @@ return {
         ["gy"] = "git_unstage_file",  
       },
     },
-      init = function()
-      if vim.fn.argc(-1) == 1 then
-        local stat = vim.loop.fs_stat(vim.fn.argv(0))
-        if stat and stat.type == "directory" then
-          require("neo-tree").setup({
-            filesystem = {
-              hijack_netrw_behavior = "open_current",
-            },
-          })
-        end
-      end
-    end,
       event_handlers = {
 
           {
@@ -41,5 +29,8 @@ return {
             end
           },}
     })
+    vim.keymap.set('n', '<leader>tg', ':Neotree git_status<CR>', { desc = '[g] Toogle Tree [G]it status view' })
+    vim.keymap.set('n', '<leader>tf', ':Neotree<CR>', { desc = '[T]oogle [F]ilesystem tree view' })
+    vim.keymap.set('n', '<leader>tb', ':Neotree buffers<CR>', { desc = '[T]oogle [B]uffer tree view' })
   end,
 }
