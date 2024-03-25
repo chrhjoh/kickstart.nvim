@@ -48,15 +48,12 @@ local on_attach = function(client, bufnr)
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
-
-  require'lsp_signature'.on_attach()
-
+  
   if client.name ~= 'pyright' then
   -- See `:help K` for why this keymap
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
-    vim.keymap.set('i', '<C->', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
-
+    nmap('<leader>k', vim.lsp.buf.signature_help,'Signature Documentation')
+    vim.keymap.set('i', '<C-B>', vim.lsp.buf.hover, {desc = 'LSP: Hover Documentation', noremap=true})
   end
   if client.name ~= 'jedi_language_server' then
     -- Lesser used LSP functionality
@@ -99,12 +96,7 @@ return {
     { 'williamboman/mason.nvim',
         {
           'williamboman/mason-lspconfig.nvim',
-          opts = {
-            ensure_installed = {
-              "debugpy"
-            }
-          },
-          config = function (_, opts)
+          config = function ()
                 local mason_lspconfig = require 'mason-lspconfig'
 
                 mason_lspconfig.setup {

@@ -21,7 +21,15 @@ return{
                 },
               }
             },
-            lualine_x = {'encoding', 'fileformat', 'filetype'},
+            lualine_x = {
+              {
+                'copilot',
+                 show_colors = true
+              },
+              'encoding',
+              'fileformat', 
+              'filetype'
+            },
             lualine_y = {'progress'},
             lualine_z = {'location'},
         }
