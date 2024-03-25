@@ -19,3 +19,7 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set('n', 'yP', ':let @* = expand("%:p")<CR>', { desc = '[P] Copy Absolute [P]athy' })
 vim.keymap.set('n', 'yp', ':let @* = expand("%")<CR>', { desc = '[p] Copy Relative [P]ath' })
 vim.keymap.set('n', 'y.',  ':let @* = expand("%:t")<CR>', { desc = '[.] Copy Filename' })
+
+-- Moving between buffers
+vim.keymap.set('n', '<TAB>', ':bn<CR>', {desc='Next Buffer', silent=true})
+vim.keymap.set('n', '<S-TAB>', ':bp<CR>', {desc='Previous Buffer', silent=true})

@@ -27,7 +27,7 @@ return{
                  show_colors = true
               },
               'encoding',
-              'fileformat', 
+              'fileformat',
               'filetype'
             },
             lualine_y = {'progress'},
