@@ -60,7 +60,9 @@ return{
             button( "r", "  > Open Recent Files"   , ":Telescope oldfiles<CR>"),
             button( "t", "  > Open File Tree", ":Neotree<CR>"),
             button( "u", "󰂖  > Update Plugins", ":Lazy update<CR>"),
-            button("c",  "  > Open Configurations", ":e $MYVIMRC | :cd %:p:h | pwd<CR>"),
+            button("c",  "  > Open Configurations", ":e $MYVIMRC | :cd %:p:h | pwd<CR> | :Neotree<CR>"),
+            button("n",  "󱓧  > Open Notes", ":cd ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ | pwd<CR> | :Neotree position=current<CR>"),
+
             button( "q", "󰗼  > Quit NVIM", ":qa<CR>"),
         }
         local terminal_cat = {  

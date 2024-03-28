@@ -65,6 +65,12 @@ return{
         require('telescope.builtin').git_files()
       end,
       desc = '[S]earch git [F]iles'
+    },{
+      '<leader>sF',
+      function ()
+        require('telescope.builtin').find_files()
+      end,
+      desc = '[S]earch all [F]iles'
     },
     {
       '<leader>so',
