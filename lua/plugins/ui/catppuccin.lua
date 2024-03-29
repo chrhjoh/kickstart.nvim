@@ -11,10 +11,10 @@ return {
           gitsigns = true,
           nvimtree = true,
           treesitter = true,
-          notify = false,
+          notify = true,
           markdown = true,
-          mason = false,
-          neotree = false,
+          mason = true,
+          neotree = true,
           mini = {
             enabled = true,
             indentscope_color = "",
@@ -28,7 +28,8 @@ return {
             enabled = true,
             -- style = "nvchad"
           },
-          which_key = false
+          which_key = true,
+          noice = true
         },
       })
     end,
