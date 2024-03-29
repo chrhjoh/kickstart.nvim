@@ -25,8 +25,8 @@ return {
             views = {
                 cmdline_popup = {
                     border = {
-                        style = "none",
-                        padding = { 1, 1 },
+                        style = "single",
+                        padding = { 0, 0 },
                     },
                     filter_options = {},
                     win_options = {
