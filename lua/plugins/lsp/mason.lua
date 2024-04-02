@@ -3,13 +3,13 @@ local servers = {
     python = {
       analysis = {
         diagnosticSeverityOverrides = {
-          reportInvalidTypeArguments="warning",
-          reportArgumentType="information",
-          reportGeneralTypeIssues="information",
-          reportReturnType="information",
-          reportIncompatibleMethodOverride="information",
-          reportIncompatibleVariableOverride="warning",
-          reportPossiblyUnboundVariable="warning"
+          reportInvalidTypeArguments = "warning",
+          reportArgumentType = "information",
+          reportGeneralTypeIssues = "information",
+          reportReturnType = "information",
+          reportIncompatibleMethodOverride = "information",
+          reportIncompatibleVariableOverride = "warning",
+          reportPossiblyUnboundVariable = "warning"
         },
         typeCheckingMode = "basic"
       },
@@ -24,7 +24,7 @@ local servers = {
   lua_ls = {
     Lua = {
       diagnostics = {
-        globals = {'vim'}
+        globals = { 'vim' }
       },
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
@@ -32,7 +32,7 @@ local servers = {
       -- diagnostics = { disable = { 'missing-fields' } },
     },
   },
-  sqlls = {root_dir = function() return vim.loop.cwd() end}
+  sqlls = { root_dir = function() return vim.loop.cwd() end }
 }
 local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
@@ -48,12 +48,12 @@ local on_attach = function(client, bufnr)
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
-  
+
   if client.name ~= 'pyright' then
-  -- See `:help K` for why this keymap
+    -- See `:help K` for why this keymap
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    nmap('<leader>k', vim.lsp.buf.signature_help,'Signature Documentation')
-    vim.keymap.set('i', '<C-B>', vim.lsp.buf.hover, {desc = 'LSP: Hover Documentation', noremap=true})
+    nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
+    vim.keymap.set('i', '<C-B>', vim.lsp.buf.hover, { desc = 'LSP: Hover Documentation', noremap = true })
   end
   if client.name ~= 'jedi_language_server' then
     -- Lesser used LSP functionality
@@ -77,7 +77,6 @@ local on_attach = function(client, bufnr)
     nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
     nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
     nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
   end
   if client.name == 'pyright' then
     client.server_capabilities.hoverProvider = false
@@ -93,29 +92,30 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 return {
-    { 'williamboman/mason.nvim',
-        {
-          'williamboman/mason-lspconfig.nvim',
-          config = function ()
-                local mason_lspconfig = require 'mason-lspconfig'
+  { 'williamboman/mason.nvim', opts = {}, event = 'VeryLazy'},
+  {'folke/neodev.nvim', opts = {}},
+  -- LSP Configuration & Plugins
+  {'neovim/nvim-lspconfig'},
+  {
+    'williamboman/mason-lspconfig.nvim',
+    event = 'VeryLazy',
+    config = function()
+      local mason_lspconfig = require 'mason-lspconfig'
 
-                mason_lspconfig.setup {
-                    automatic_installation = true,
-                    ensure_installed = vim.tbl_keys(servers),
-                    handlers = {
-                        function(server_name)
-                            require('lspconfig')[server_name].setup {
-                                capabilities = capabilities,
-                                on_attach = on_attach,
-                                settings = servers[server_name],
-                                filetypes = (servers[server_name] or {}).filetypes,
-                             }
-                        end,
-                    }
-                }
-
+      mason_lspconfig.setup {
+        automatic_installation = true,
+        ensure_installed = vim.tbl_keys(servers),
+        handlers = {
+          function(server_name)
+            require('lspconfig')[server_name].setup {
+              capabilities = capabilities,
+              on_attach = on_attach,
+              settings = servers[server_name],
+              filetypes = (servers[server_name] or {}).filetypes,
+            }
           end,
         }
-    },
-
+      }
+    end,
+  }
 }
