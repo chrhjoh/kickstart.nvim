@@ -2,7 +2,7 @@ return {
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    event = "InsertEnter",
+    event = "VeryLazy",
     config = function()
       require("copilot").setup({
         suggestion = { enabled = false },
@@ -10,7 +10,7 @@ return {
       })
     end,
   },
-  { 'AndreM222/copilot-lualine' },
+  { 'AndreM222/copilot-lualine', event = 'VeryLazy' },
   {
     "zbirenbaum/copilot-cmp",
     config = function()
@@ -20,6 +20,7 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
+    event = "VeryLazy",
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper

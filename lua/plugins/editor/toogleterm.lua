@@ -13,6 +13,7 @@ _G.set_terminal_keymaps()
 return {
     'akinsho/toggleterm.nvim',
     version = "*",
+    event = 'VeryLazy',
     config = function ()
         require("toggleterm").setup{
             size = 80,
