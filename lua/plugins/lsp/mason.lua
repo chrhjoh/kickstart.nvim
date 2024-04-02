@@ -53,7 +53,7 @@ local on_attach = function(client, bufnr)
     -- See `:help K` for why this keymap
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
     nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
-    vim.keymap.set('i', '<C-B>', vim.lsp.buf.hover, { desc = 'LSP: Hover Documentation', noremap = true })
+    vim.keymap.set('i', '<C-?>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature', noremap = true })
   end
   if client.name ~= 'jedi_language_server' then
     -- Lesser used LSP functionality
@@ -92,10 +92,10 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 return {
-  { 'williamboman/mason.nvim', opts = {}, event = 'VeryLazy'},
-  {'folke/neodev.nvim', opts = {}},
+  { 'williamboman/mason.nvim', opts = {}, event = 'VeryLazy' },
+  { 'folke/neodev.nvim',       opts = {} },
   -- LSP Configuration & Plugins
-  {'neovim/nvim-lspconfig'},
+  { 'neovim/nvim-lspconfig' },
   {
     'williamboman/mason-lspconfig.nvim',
     event = 'VeryLazy',

@@ -5,18 +5,22 @@ return {
     event = "VeryLazy",
     config = function()
       require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false }
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          keymap = {
+            accept = "<C-L>",
+            accept_word = false,
+            accept_line = false,
+            next = "<C-N>",
+            prev = "<C-P>",
+            dismiss = "<C-D>",
+          }
+        },
       })
     end,
   },
   { 'AndreM222/copilot-lualine', event = 'VeryLazy' },
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-  },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
@@ -92,7 +96,8 @@ return {
       vim.keymap.set({ 'n', 'v' }, "<leader>cR", "<cmd>CopilotChatRefactor<cr>", { desc = "CopilotChat - Refactor code" })
       vim.keymap.set({ 'n', 'v' }, "<leader>cn", "<cmd>CopilotChatBetterNamings<cr>",
         { desc = "CopilotChat - Better Naming" })
-      vim.keymap.set({ 'n', 'v' }, "<leader>cd", "<cmd>CopilotChatDocs<cr>", { desc = "CopilotChat - Generate Documentation" })
+      vim.keymap.set({ 'n', 'v' }, "<leader>cd", "<cmd>CopilotChatDocs<cr>",
+        { desc = "CopilotChat - Generate Documentation" })
 
       -- Generate commit message based on the git diff
       vim.keymap.set(
