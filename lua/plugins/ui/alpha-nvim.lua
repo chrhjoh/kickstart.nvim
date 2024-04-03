@@ -54,7 +54,7 @@ return{
         }
         -- Set menu
         dashboard.section.buttons.val = {
-            button("s",  "  > Restore session", ":SessionRestore <CR>"),
+            button("s",  "  > Restore session", ":Telescope persisted<CR>"),
             button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
             button( "f", "  > Find file", ":Telescope find_files<CR>"),
             button( "r", "  > Open Recent Files"   , ":Telescope oldfiles<CR>"),

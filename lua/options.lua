@@ -40,3 +40,5 @@ vim.o.termguicolors = true
 
 vim.opt.conceallevel = 1
 
+vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winpos,winsize"
+

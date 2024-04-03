@@ -1,26 +1,36 @@
-return{
+return {
   'nvim-telescope/telescope.nvim',
   branch = '0.1.x',
+  event = 'VeryLazy',
   dependencies = {
-      'nvim-lua/plenary.nvim',
-      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-      -- Only load if `make` is available. Make sure you have the system
-      -- requirements installed.
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        -- NOTE: If you are having trouble with this installation,
-        --       refer to the README for telescope-fzf-native for more instructions.
-        build = 'make',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
-        config = function ()
-          require("telescope").load_extension('fzf')
-        end
-      },
+    'nvim-lua/plenary.nvim',
+    -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+    -- Only load if `make` is available. Make sure you have the system
+    -- requirements installed.
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      -- NOTE: If you are having trouble with this installation,
+      --       refer to the README for telescope-fzf-native for more instructions.
+      build = 'make',
+      cond = function()
+        return vim.fn.executable 'make' == 1
+      end,
+      config = function()
+        require("telescope").load_extension('fzf')
+        require("telescope").load_extension("persisted")
+      end
     },
-  config = function ()
+  },
+  config = function()
     require('telescope').setup {
+      extensions = {
+        persisted = {
+          layout_config = {
+            width = 0.5,
+            height = 0.5,
+          }
+        }
+      },
       mappings = {
         i = {
           ['<C-u>'] = false,
@@ -28,9 +38,8 @@ return{
         },
       },
     }
-
   end,
-  keys= {
+  keys = {
     {
       '<leader>sc',
       function()
@@ -44,7 +53,7 @@ return{
     },
     {
       '<leader>s/',
-      function ()
+      function()
         require('telescope.builtin').live_grep {
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
@@ -54,34 +63,34 @@ return{
     },
     {
       '<leader>ss',
-      function ()
+      function()
         require('telescope.builtin').builtin()
       end,
       desc = '[S]earch [S]elect Telescope'
     },
     {
       '<leader>sf',
-      function ()
+      function()
         require('telescope.builtin').git_files()
       end,
       desc = '[S]earch git [F]iles'
-    },{
-      '<leader>sF',
-      function ()
-        require('telescope.builtin').find_files()
-      end,
-      desc = '[S]earch all [F]iles'
-    },
+    }, {
+    '<leader>sF',
+    function()
+      require('telescope.builtin').find_files()
+    end,
+    desc = '[S]earch all [F]iles'
+  },
     {
       '<leader>so',
-      function ()
+      function()
         require('telescope.builtin').oldfiles()
       end,
       desc = '[S]earch [O]ld files'
     },
     {
       '<leader>sb',
-      function ()
+      function()
         require('telescope.builtin').buffers()
       end,
       desc = '[S]earch Open [B]uffers'
