@@ -61,7 +61,8 @@ return{
             button( "t", "  > Open File Tree", ":Neotree<CR>"),
             button( "u", "󰂖  > Update Plugins", ":Lazy update<CR>"),
             button("c",  "  > Open Configurations", ":e $MYVIMRC | :cd %:p:h | pwd<CR> | :Neotree<CR>"),
-            button("n",  "󱓧  > Open Notes", ":cd ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ | pwd<CR> | :Neotree position=current<CR>"),
+            button("n",  "󱓧  > Search Notes", "<cmd>ObsidianQuickSwitch<CR>"),
+            button("N",  "󱓧  > Choose Note Workspace", "<cmd>ObsidianWorkspace<CR>"),
 
             button( "q", "󰗼  > Quit NVIM", ":qa<CR>"),
         }
@@ -96,7 +97,7 @@ return{
          -- Send config to alpha
         dashboard.section.footer.opts.hl = 'AlphaFooter'
         dashboard.config.layout = {
-            { type = "padding", val = 2 },
+            { type = "padding", val = 1 },
             dashboard.section.header,
             dashboard.section.buttons,
             dashboard.section.footer,

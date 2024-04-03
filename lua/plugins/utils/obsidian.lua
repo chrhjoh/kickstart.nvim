@@ -1,7 +1,7 @@
 return {
   "epwalsh/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
-  lazy = true,
+  event = 'VeryLazy',
   ft = "markdown",
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   -- event = {
@@ -16,47 +16,34 @@ return {
 
     -- see below for full list of optional dependencies 👇
   },
-  opts = {
-    workspaces = {
-      {
-        name = "personal",
-        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Personal",
+  config = function()
+    require("obsidian").setup {
+      workspaces = {
+        {
+          name = "personal",
+          path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Personal",
+        },
+        {
+          name = "work",
+          path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Work",
+        },
       },
-      {
-        name = "work",
-        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Work",
-      },
-    },
-
-    -- see below for full list of options 👇
-    mappings = {
-      -- "Obsidian follow"
-      ["<leader>of"] = {
-        action = function()
-          return require("obsidian").util.gf_passthrough()
-        end,
-        opts = { noremap = false, expr = true, buffer = true, desc = '[O]bsidian [F]ollow' },
-      },
-      -- Toggle check-boxes "obsidian done"
-      ["<leader>od"] = {
-        action = function()
-          return require("obsidian").util.toggle_checkbox()
-        end,
-        opts = { buffer = true, desc= 'Checkbox [D]one'},
-      },
-      -- Create a new newsletter issue
-      ["<leader>on"] = {
-        action = function()
-          return require("obsidian").commands.new_note("Newsletter-Issue")
-        end,
-        opts = { buffer = true, desc='New [N]ewsletter Note'},
-      },
-      ["<leader>ot"] = {
-        action = function()
-          return require("obsidian").util.insert_template("Newsletter-Issue")
-        end,
-        opts = { buffer = true, desc= 'Insert Newsletter [T]emplate' },
-      },
-    },
-  },
+      -- see below for full list of options 👇
+      mappings = {
+      }
+    }
+    vim.keymap.set('n', '<leader>of', '<cmd> lua require("obsidian").util.gf_passthrough()<CR>',
+      { noremap = false, expr = true, desc = '[O]bsidian [F]ollow' })
+    vim.keymap.set('n', '<leader>on', '<cmd>ObsidianNew<CR>',
+      { noremap = false, expr = true, desc = '[O]bsidian [N]ew Note' })
+    vim.keymap.set('n', '<leader>ot', '<cmd>ObsidianTemplate<CR>',
+      { noremap = false, expr = true, desc = '[O]bsidian [T]emplate' })
+    vim.keymap.set('n', '<leader>od', '<cmd>require("obsidian").util.toggle_checkbox()<CR>',
+      { noremap = false, expr = true, desc = '[O]bsidian [D]one' })
+    vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "[O]pen in [O]bsidian App" })
+    vim.keymap.set("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Show [O]bsidian[B]acklinks" })
+    vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<CR>", { desc = "Show [O]bsidian[L]inks" })
+    vim.keymap.set("n", "<leader>ow", "<cmd>ObsidianWorkspace<CR>", { desc = "Choose [O]bsidian [W]orkspaces" })
+    vim.keymap.set("n", "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "[O]bsidian [Q]uick Switch" })
+  end
 }
