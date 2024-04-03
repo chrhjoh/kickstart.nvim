@@ -30,6 +30,7 @@ return {
       { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
     },
     config = function()
+      local select = require("CopilotChat.select")
       require("CopilotChat").setup {
         debug = false, -- Enable debugging
         -- See Configuration section for rest
@@ -46,6 +47,20 @@ return {
           BetterNamings = {
             prompt = "Please provide better names for the following variables and functions."
           },
+          Commit = {
+            prompt = 'Write commit message for the change with commitizen convention.',
+            selection = select.gitdiff,
+          },
+          CommitStaged = {
+            prompt = 'Write commit message for the change with commitizen convention.',
+            selection = function(source)
+              return select.gitdiff(source, true)
+            end,
+          },
+           Summarize = "Please summarize the following text.",
+           Spelling = "Please correct any grammar and spelling errors in the following text.",
+           Wording = "Please improve the grammar and wording of the following text.",
+           Concise = "Please rewrite the following text to make it more concise.",
         },
 
         window = {
