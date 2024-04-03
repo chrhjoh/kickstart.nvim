@@ -93,9 +93,9 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 return {
   { 'williamboman/mason.nvim', opts = {}, event = 'VeryLazy' },
-  { 'folke/neodev.nvim',       opts = {} },
+  { 'folke/neodev.nvim',       opts = {}, event = 'VeryLazy'},
   -- LSP Configuration & Plugins
-  { 'neovim/nvim-lspconfig' },
+  { 'neovim/nvim-lspconfig', event = 'VeryLazy' },
   {
     'williamboman/mason-lspconfig.nvim',
     event = 'VeryLazy',
