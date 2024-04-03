@@ -29,8 +29,8 @@ return {
             end
           },}
     })
-    vim.keymap.set('n', '<leader>tg', ':Neotree git_status<CR>', { desc = '[g] Toogle Tree [G]it status view' })
-    vim.keymap.set('n', '<leader>tf', ':Neotree<CR>', { desc = '[T]oogle [F]ilesystem tree view' })
-    vim.keymap.set('n', '<leader>tb', ':Neotree buffers<CR>', { desc = '[T]oogle [B]uffer tree view' })
+    vim.keymap.set('n', '<leader>tg', ':Neotree git_status<CR>', { desc = '[g] [G]it Tree' })
+    vim.keymap.set('n', '<leader>tf', ':Neotree<CR>', { desc = '[F]ilesystem Tree' })
+    vim.keymap.set('n', '<leader>tb', ':Neotree buffers<CR>', { desc = '[B]uffer Tree' })
   end,
 }
