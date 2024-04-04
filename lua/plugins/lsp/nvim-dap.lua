@@ -41,7 +41,6 @@ return {
       -- online, please don't ask me how to install them :)
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
-        'delve',
       },
     }
 
@@ -87,7 +86,7 @@ return {
       {
         type = 'python', -- the type here established the link to the adapter definition: `dap.adapters.python`
         request = 'launch',
-        name = "Launch file from current workding directory",
+        name = "Launch file from current working directory",
         cwd = vim.fn.getcwd(),
         program = "${file}", -- This configuration will launch the current file if used.
       }
