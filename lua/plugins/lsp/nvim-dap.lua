@@ -22,7 +22,6 @@ return {
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
-    'leoluz/nvim-dap-go',
     'mfussenegger/nvim-dap-python',
   },
   config = function()
@@ -93,8 +92,6 @@ return {
         program = "${file}", -- This configuration will launch the current file if used.
       }
     }
-    -- Install golang specific config
-    require('dap-go').setup()
     require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
   end,
 }

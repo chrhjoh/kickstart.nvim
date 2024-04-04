@@ -1,39 +1,3 @@
-local servers = {
-  pyright = {
-    python = {
-      analysis = {
-        diagnosticSeverityOverrides = {
-          reportInvalidTypeArguments = "warning",
-          reportArgumentType = "information",
-          reportGeneralTypeIssues = "information",
-          reportReturnType = "information",
-          reportIncompatibleMethodOverride = "information",
-          reportIncompatibleVariableOverride = "warning",
-          reportPossiblyUnboundVariable = "warning"
-        },
-        typeCheckingMode = "basic"
-      },
-    },
-  },
-  jedi_language_server = {},
-  bashls = {},
-  jsonls = {},
-  marksman = {},
-  r_language_server = {},
-  yamlls = {},
-  lua_ls = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      },
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-      -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-      -- diagnostics = { disable = { 'missing-fields' } },
-    },
-  },
-  sqlls = { root_dir = function() return vim.loop.cwd() end }
-}
 local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
@@ -93,29 +57,91 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 return {
   { 'williamboman/mason.nvim', opts = {}, event = 'VeryLazy' },
-  { 'folke/neodev.nvim',       opts = {}, event = 'VeryLazy'},
-  -- LSP Configuration & Plugins
-  { 'neovim/nvim-lspconfig', event = 'VeryLazy' },
+  { 'folke/neodev.nvim',       opts = {}, event = 'VeryLazy' },
   {
     'williamboman/mason-lspconfig.nvim',
     event = 'VeryLazy',
     config = function()
-      local mason_lspconfig = require 'mason-lspconfig'
-
-      mason_lspconfig.setup {
+      require('mason-lspconfig').setup {
+        ensure_installed = {
+          'pyright',
+          'jedi_language_server',
+          'bashls',
+          'jsonls',
+          'marksman',
+          'yamlls',
+          'sqlls',
+          'lua_ls',
+        },
         automatic_installation = true,
-        ensure_installed = vim.tbl_keys(servers),
-        handlers = {
-          function(server_name)
-            require('lspconfig')[server_name].setup {
-              capabilities = capabilities,
-              on_attach = on_attach,
-              settings = servers[server_name],
-              filetypes = (servers[server_name] or {}).filetypes,
-            }
-          end,
-        }
       }
-    end,
-  }
+    end
+  },
+  {
+    'neovim/nvim-lspconfig',
+    event = 'VeryLazy',
+    config = function()
+      local lspconfig = require('lspconfig')
+      lspconfig.pyright.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+          python = {
+            analysis = {
+              diagnosticSeverityOverrides = {
+                reportInvalidTypeArguments = "warning",
+                reportArgumentType = "information",
+                reportGeneralTypeIssues = "information",
+                reportReturnType = "information",
+                reportIncompatibleMethodOverride = "information",
+                reportIncompatibleVariableOverride = "warning",
+                reportPossiblyUnboundVariable = "warning"
+              },
+              typeCheckingMode = "basic"
+            },
+          },
+        },
+      }
+      lspconfig.jedi_language_server.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }
+      lspconfig.bashls.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }
+      lspconfig.jsonls.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }
+      lspconfig.marksman.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }
+      lspconfig.yamlls.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }
+      lspconfig.sqlls.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = { root_dir = function() return vim.loop.cwd() end }
+      }
+      lspconfig.lua_ls.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' }
+            },
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
+            -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+            -- diagnostics = { disable = { 'missing-fields' } },
+          }
+        },
+      }
+    end
+  },
 }
