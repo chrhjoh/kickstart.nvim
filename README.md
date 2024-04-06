@@ -31,5 +31,4 @@ If you would prefer to hide this step and run the plugin sync from the command l
 nvim --headless "+Lazy! sync" +qa
 ```
 
-```
 
