@@ -15,11 +15,11 @@ local on_attach = function(client, bufnr)
 
   if client.name ~= 'pyright' then
     -- See `:help K` for why this keymap
-    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
     nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
     vim.keymap.set('i', '<C-?>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature', noremap = true })
   end
   if client.name ~= 'jedi_language_server' then
+    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
     -- Lesser used LSP functionality
     nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
     nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
@@ -43,11 +43,11 @@ local on_attach = function(client, bufnr)
     nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
   end
   if client.name == 'pyright' then
-    client.server_capabilities.hoverProvider = false
     client.server_capabilities.signatureHelpProvider = false
   end
 
   if client.name == 'jedi_language_server' then
+    client.server_capabilities.hoverProvider = false
     client.server_capabilities.completionProvider = false
   end
 end
