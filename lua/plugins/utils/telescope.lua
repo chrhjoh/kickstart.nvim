@@ -84,7 +84,7 @@ return {
     }, {
     '<leader>sF',
     function()
-      require('telescope.builtin').find_files()
+      require('telescope.builtin').find_files{no_ignore=true}
     end,
     desc = '[S]earch all [F]iles'
   },
@@ -153,7 +153,8 @@ return {
       '<leader>sa',
       function()
         require('telescope.builtin').find_files {
-          hidden = true,
+          no_ignore=true,
+          hidden=true,
         }
       end,
       desc = '[S]earch [A]ll files'
@@ -161,14 +162,14 @@ return {
     {
       "<Leader>sD",
       function()
-        require("telescope").extensions.directory.live_grep{hidden = true}         -- find_files|grep_string|live_grep
+        require("telescope").extensions.directory.live_grep{no_ignore=true}         -- find_files|grep_string|live_grep
       end,
       desc = "[S]elect [D]irectory for Live Grep",
     },
     {
       "<Leader>sd",
       function()
-        require("telescope").extensions.directory.find_files{hidden = true}         -- find_files|grep_string|live_grep
+        require("telescope").extensions.directory.find_files{no_ignore=true}         -- find_files|grep_string|live_grep
       end,
       desc = "[S]elect [D]irectory for Find Files",
     },
