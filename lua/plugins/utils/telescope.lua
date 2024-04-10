@@ -17,9 +17,9 @@ return {
       end,
       config = function()
         require("telescope").load_extension('fzf')
-        require("telescope").load_extension("persisted")
       end
     },
+    {"fbuchlak/telescope-directory.nvim"}
   },
   config = function()
     require('telescope').setup {
@@ -35,7 +35,7 @@ return {
         mappings = {
           i = {
             ['<C-u>'] = false,
-            ['<C-d>'] = false,
+            ['<C-d>'] = require('telescope.actions').delete_buffer
           },
           n = {
             ['<C-d>'] = require('telescope.actions').delete_buffer
@@ -43,6 +43,8 @@ return {
         },
       }
     }
+    require("telescope").load_extension("persisted")
+    require("telescope").load_extension("directory")
   end,
   keys = {
     {
@@ -146,6 +148,30 @@ return {
         require('telescope.builtin').resume()
       end,
       desc = '[S]earch [R]esume'
-    }
+    },
+    {
+      '<leader>sa',
+      function()
+        require('telescope.builtin').find_files {
+          hidden = true,
+        }
+      end,
+      desc = '[S]earch [A]ll files'
+    },
+    {
+      "<Leader>sD",
+      function()
+        require("telescope").extensions.directory.live_grep{hidden = true}         -- find_files|grep_string|live_grep
+      end,
+      desc = "[S]elect [D]irectory for Live Grep",
+    },
+    {
+      "<Leader>sd",
+      function()
+        require("telescope").extensions.directory.find_files{hidden = true}         -- find_files|grep_string|live_grep
+      end,
+      desc = "[S]elect [D]irectory for Find Files",
+    },
+
   }
 }

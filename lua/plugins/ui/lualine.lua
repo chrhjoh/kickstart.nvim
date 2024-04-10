@@ -4,6 +4,7 @@ return{
     -- See `:help lualine.txt`
     config = function ()
       require('lualine').setup{
+      event = 'VimEnter',
         options = {
           icons_enabled = true,
           theme = 'catppuccin',
