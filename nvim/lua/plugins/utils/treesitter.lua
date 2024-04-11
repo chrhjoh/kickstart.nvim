@@ -4,7 +4,7 @@ return {
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
-    event = 'InsertEnter',
+    event = 'VeryLazy',
     build = ':TSUpdate',
     config = vim.defer_fn(function ()
       require('nvim-treesitter.configs').setup {
