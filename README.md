@@ -3,7 +3,7 @@
 This repository contains my dotfiles for configuration of:
 
 * Terminal: [Kitty](https://sw.kovidgoyal.net/kitty/binary/)
-* Command Prompt: [oh-my-posh](https://ohmyposh.dev/docs))
+* Command Prompt: [oh-my-posh](https://ohmyposh.dev/docs)
 * Window Manager: [Tmux](https://github.com/tmux/tmux)
 * Editor: [Neovim](https://github.com/neovim/neovim)
 
