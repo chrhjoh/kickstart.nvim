@@ -20,7 +20,6 @@ return {
       })
     end,
   },
-  { 'AndreM222/copilot-lualine', event = 'VeryLazy' },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",

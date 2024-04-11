@@ -1,34 +1,25 @@
-# Neovim
+# DotFiles
 
-## Installation
-Clone kickstart.nvim:
+This repository contains my dotfiles for configuration of:
+
+* Terminal: Kitty
+* Shell: [Zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) ([oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/) and [oh-my-posh](https://ohmyposh.dev/docs))
+* Window Manager: [Tmux](https://github.com/tmux/tmux)
+* Editor: [Neovim](https://github.com/neovim/neovim)
+
+## Requirements
+The programs above will have to be installed manually. Installations can be found from the link above. 
+
+## Installation 
+The files can be cloned to the 
 
 on Linux and Mac
 ```sh
-git clone https://github.com/chrhjoh/neovim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone https://github.com/chrhjoh/dotfiles.git "${XDG_CONFIG_HOME:-$HOME/.config}"/dotfiles
 ```
-on Windows (cmd)
-```sh
-git clone  https://github.com/chrhjoh/neovim.git  %userprofile%\AppData\Local\nvim\ 
-```
-on Windows (powershell)
+After cloning the dotfiles can be linked to either `$XDG_CONFIG_HOME` or `$HOME` (See `bin/make_links.sh`) by the following command.
+Remember to back up current configurations that you want to save.
 
 ```sh
-git clone https://github.com/chrhjoh/neovim.git $env:USERPROFILE\AppData\Local\nvim\ 
+cd ${XDG_CONFIG_HOME:-$HOME/.config}"/dotfiles && bash bin/make_links.sh
 ```
-
-## Start Neovim
-
-```sh
-nvim
-```
-
-The `Lazy` plugin manager will start automatically on the first run and install the configured plugins - as can be seen in the introduction video. After the installation is complete you can press `q` to close the `Lazy` UI and **you are ready to go**! Next time you run nvim `Lazy` will no longer show up.
-
-If you would prefer to hide this step and run the plugin sync from the command line, you can use:
-
-```sh
-nvim --headless "+Lazy! sync" +qa
-```
-
-
