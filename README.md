@@ -3,7 +3,7 @@
 This repository contains my dotfiles for configuration of:
 
 * Terminal: Kitty
-* Shell: [Zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) ([oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/) and [oh-my-posh](https://ohmyposh.dev/docs))
+* Command Prompt: [oh-my-posh](https://ohmyposh.dev/docs))
 * Window Manager: [Tmux](https://github.com/tmux/tmux)
 * Editor: [Neovim](https://github.com/neovim/neovim)
 
@@ -22,4 +22,14 @@ Remember to back up current configurations that you want to save.
 
 ```sh
 cd ${XDG_CONFIG_HOME:-$HOME/.config}"/dotfiles && bash bin/make_links.sh
+```
+
+### oh-my-posh
+The prompt theme can be added by adding it to your shell profile.
+
+See [https://ohmyposh.dev/docs/installation/prompt] for information on how
+
+The theme can be found at 
+```sh
+${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-posh/theme.json
 ```
