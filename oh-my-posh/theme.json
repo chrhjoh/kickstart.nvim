@@ -96,7 +96,7 @@
           "invert_powerline": true,
           "foreground": "p:text",
           "background": "p:pink",
-          "template": "{{ if .Env.PBS_JOBID }} \uf489 {{ .Output}} {{ end }}",
+          "template": "{{ if .Env.PBS_JOBID }}\uf489 {{ .Output}}{{ end }}",
           "properties": {
             "shell": "bash",
             "command": "echo $PBS_JOBID | sed 's/^\\([0-9]*\\)\\..*$/\\1/'"
@@ -109,9 +109,11 @@
           "invert_powerline": true,
           "foreground": "p:text",
           "background": "#cba6f7",
-          "template": " \uE235 {{ .Major }}.{{ .Minor }} {{ if .Venv }}{{ .Venv }} {{ end }}",
+          "template": "\uE235 {{ .Major }}.{{ .Minor }} {{ if .Venv }}{{ .Venv }} {{ end }}",
           "properties": {
-            "fetch_virtual_env": true
+            "fetch_virtual_env": true,
+            "home_enabled": true,
+            "display_mode" : "always"
           }
         },
         {
@@ -123,7 +125,7 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b6",
           "invert_powerline": true,
-          "template": " \u2665 {{ .CurrentDate | date .Format }} ",
+          "template": "\u2665 {{ .CurrentDate | date .Format }} ",
           "type": "time"
         },
         {
