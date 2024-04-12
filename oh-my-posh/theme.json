@@ -112,8 +112,7 @@
           "template": "\uE235 {{ .Major }}.{{ .Minor }} {{ if .Venv }}{{ .Venv }} {{ end }}",
           "properties": {
             "fetch_virtual_env": true,
-            "home_enabled": true,
-            "display_mode" : "always"
+            "home_enabled": true
           }
         },
         {
