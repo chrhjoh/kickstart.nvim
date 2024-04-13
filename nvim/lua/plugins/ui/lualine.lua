@@ -2,14 +2,15 @@ return {
   -- Set lualine as statusline
   'nvim-lualine/lualine.nvim',
   -- See `:help lualine.txt`
-  event = 'BufEnter',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  priority = 1000,
   config = function()
     require('lualine').setup {
       options = {
         theme = 'catppuccin',
         section_separators = '',
         component_separators = '|',
-        disabled_filetypes = {'alpha', 'Scratch'},
+        disabled_filetypes = {'alpha'},
       },
       sections = {
         lualine_a = { 'mode' },
