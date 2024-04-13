@@ -4,20 +4,7 @@ return {
     cmd = "Copilot",
     event = "VeryLazy",
     config = function()
-      require("copilot").setup({
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-          keymap = {
-            accept = "<C-L>",
-            accept_word = false,
-            accept_line = false,
-            next = "<C-N>",
-            prev = "<C-P>",
-            dismiss = "<C-D>",
-          }
-        },
-      })
+      require("copilot").setup({})
     end,
   },
   {
@@ -56,10 +43,10 @@ return {
               return select.gitdiff(source, true)
             end,
           },
-           Summarize = "Please summarize the following text.",
-           Spelling = "Please correct any grammar and spelling errors in the following text.",
-           Wording = "Please improve the grammar and wording of the following text.",
-           Concise = "Please rewrite the following text to make it more concise.",
+          Summarize = "Please summarize the following text.",
+          Spelling = "Please correct any grammar and spelling errors in the following text.",
+          Wording = "Please improve the grammar and wording of the following text.",
+          Concise = "Please rewrite the following text to make it more concise.",
         },
 
         window = {
