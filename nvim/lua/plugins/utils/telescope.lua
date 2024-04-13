@@ -162,14 +162,14 @@ return {
     {
       "<Leader>sD",
       function()
-        require("telescope").extensions.directory.live_grep{no_ignore=true}         -- find_files|grep_string|live_grep
+        require("telescope").extensions.directory.live_grep{}         -- find_files|grep_string|live_grep
       end,
       desc = "[S]elect [D]irectory for Live Grep",
     },
     {
       "<Leader>sd",
       function()
-        require("telescope").extensions.directory.find_files{no_ignore=true}         -- find_files|grep_string|live_grep
+        require("telescope").extensions.directory.find_files{}         -- find_files|grep_string|live_grep
       end,
       desc = "[S]elect [D]irectory for Find Files",
     },
