@@ -1,7 +1,7 @@
 return {
   'nvim-telescope/telescope.nvim',
   branch = '0.1.x',
-  event = 'VeryLazy',
+  lazy = true,
   dependencies = {
     'nvim-lua/plenary.nvim',
     -- Fuzzy Finder Algorithm which requires local dependencies to be built.
@@ -70,18 +70,18 @@ return {
     {
       '<leader>ss',
       function()
-        require('telescope.builtin').builtin()
+        require('telescope').extensions.persisted.persisted()
       end,
-      desc = '[S]earch [S]elect Telescope'
+      desc = '[S]earch [S]essions'
     },
     {
-      '<leader>sf',
+      '<leader>sF',
       function()
         require('telescope.builtin').git_files()
       end,
       desc = '[S]earch git [F]iles'
     }, {
-    '<leader>sF',
+    '<leader>sf',
     function()
       require('telescope.builtin').find_files{no_ignore=true}
     end,
@@ -172,6 +172,7 @@ return {
       end,
       desc = "[S]elect [D]irectory for Find Files",
     },
+
 
   }
 }

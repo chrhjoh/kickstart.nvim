@@ -2,7 +2,7 @@ return {
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    event = "VeryLazy",
+    lazy = true,
     config = function()
       require("copilot").setup({})
     end,
@@ -10,7 +10,8 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
-    event = "VeryLazy",
+    lazy = true,
+    cmd = 'CopilotChat',
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
@@ -118,7 +119,8 @@ return {
       -- Fix the issue with diagnostic
       vim.keymap.set({ 'n', 'v' }, "<leader>cf", "<cmd>CopilotChatFixDiagnostic<cr>",
         { desc = "CopilotChat - Fix Diagnostic" })
-    end
+    end,
+
   },
   -- See Commands section for default commands if you want to lazy load on them
 }

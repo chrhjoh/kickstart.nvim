@@ -54,16 +54,15 @@ return{
         }
         -- Set menu
         dashboard.section.buttons.val = {
-            button("s",  "  > Restore session", ":Telescope persisted<CR>"),
-            button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
-            button( "f", "  > Find file", ":Telescope find_files<CR>"),
-            button( "r", "  > Open Recent Files"   , ":Telescope oldfiles<CR>"),
-            button( "t", "  > Open File Tree", ":Neotree<CR>"),
-            button( "u", "󰂖  > Update Plugins", ":Lazy update<CR>"),
-            button("c",  "  > Open Configurations", ":e $MYVIMRC | :cd %:p:h | pwd<CR> | :Neotree<CR>"),
+            button("s",  "  > Restore session", ':lua require("telescope").extensions.persisted.persisted()<CR>' ),
+            button("f", "  > Find file", ':lua require("telescope.builtin").find_files()<CR>'),
+            button("e", "  > New file" , ":ene <BAR> startinsert <CR>"),
+            button("o", "  > Open Recent Files", ':lua require("telescope.builtin").oldfiles()<CR>'),
+            button("t", "  > Open File Tree", ':lua require("neo-tree.command").execute{}<CR>'),
+            button("u", "󰂖  > Update Plugins", ":Lazy update<CR>"),
+            button("c",  "  > Open Configurations", ":e $MYVIMRC | :cd %:p:h | pwd<CR>"),
             button("n",  "󱓧  > Search Notes", "<cmd>ObsidianQuickSwitch<CR>"),
             button("N",  "󱓧  > Choose Note Workspace", "<cmd>ObsidianWorkspace<CR>"),
-
             button( "q", "󰗼  > Quit NVIM", ":qa<CR>"),
         }
         local terminal_cat = {  

@@ -3,7 +3,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 return {
     "nvimtools/none-ls.nvim",
     requires = { "nvim-lua/plenary.nvim" },
-    event = "VeryLazy",
+    event='BufEnter *.py',
     config = function()
         require('null-ls').setup({
             sources = {

@@ -13,11 +13,11 @@ _G.set_terminal_keymaps()
 return {
     'akinsho/toggleterm.nvim',
     version = "*",
-    event = 'VeryLazy',
+    lazy=true,
     config = function ()
         require("toggleterm").setup{
             size = 80,
-            open_mapping = [[<C-t>]],
+            open_mapping = false,
             hide_numbers = true,
             shade_filetypes = {},
             shade_terminals = true,
@@ -27,7 +27,7 @@ return {
             persist_size = true,
             direction = "float",
             close_on_exit = false,
-            shell = vim.o.shell,
+            shell = 'zsh',
             float_opts = {
                 border = "curved",
                 winblend = 0,
@@ -39,4 +39,8 @@ return {
                 height=50
             },
         }
-    end}
+    end,
+    keys = {
+        {'<C-t>', ':ToggleTerm<CR>', desc='Toggle Terminal'}
+    }
+}

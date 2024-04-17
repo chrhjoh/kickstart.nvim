@@ -1,7 +1,7 @@
 
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  event = "VeryLazy",
+  lazy=true,
   version = "*",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -29,8 +29,12 @@ return {
             end
           },}
     })
-    vim.keymap.set('n', '<leader>tg', ':Neotree git_status<CR>', { desc = '[g] [G]it Tree' })
-    vim.keymap.set('n', '<leader>tf', ':Neotree<CR>', { desc = '[F]ilesystem Tree' })
-    vim.keymap.set('n', '<leader>tb', ':Neotree buffers<CR>', { desc = '[B]uffer Tree' })
   end,
+  keys = {
+    {'<leader>tg', ':Neotree git_status<CR>',  desc = '[g] [G]it Tree' },
+    {'<leader>tf', ':Neotree<CR>',  desc = '[F]ilesystem Tree' },
+    {'<leader>tb', ':Neotree buffers<CR>',  desc = '[B]uffer Tree' }
+
+
+  }
 }

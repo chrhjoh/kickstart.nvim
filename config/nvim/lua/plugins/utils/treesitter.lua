@@ -2,11 +2,11 @@ return {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
+      {'nvim-treesitter/nvim-treesitter-textobjects', lazy=true},
     },
-    event = 'VeryLazy',
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     build = ':TSUpdate',
-    config = vim.defer_fn(function ()
+    config = function ()
       require('nvim-treesitter.configs').setup {
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'markdown' },
@@ -75,5 +75,5 @@ return {
           },
         },
       }
-    end, 0)
+    end
 }

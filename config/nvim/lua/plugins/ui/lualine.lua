@@ -3,7 +3,6 @@ return {
   'nvim-lualine/lualine.nvim',
   -- See `:help lualine.txt`
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  priority = 1000,
   config = function()
     require('lualine').setup {
       options = {
