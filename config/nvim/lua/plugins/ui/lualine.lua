@@ -2,7 +2,10 @@ return {
   -- Set lualine as statusline
   'nvim-lualine/lualine.nvim',
   -- See `:help lualine.txt`
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+    'AndreM222/copilot-lualine' ,
+      },
   event = {"BufReadPost", "BufNewFile", "BufWritePre"},
   config = function()
     require('lualine').setup {
@@ -14,7 +17,7 @@ return {
       },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_b = { 'branch', 'diff', {'diagnostics', sections = {'error', 'warn'}} },
         lualine_c = {
           {
             'buffers',
@@ -24,6 +27,7 @@ return {
           }
         },
         lualine_x = {
+          {'copilot', show_colors=true},
           'encoding',
           'filetype'
         },
