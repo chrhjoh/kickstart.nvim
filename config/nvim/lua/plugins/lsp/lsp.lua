@@ -13,47 +13,38 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-    -- See `:help K` for why this keymap
-    nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
-    vim.keymap.set('i', '<C-?>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature', noremap = true })
-    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    -- Lesser used LSP functionality
-    nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-    nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-    nmap('<leader>wl', function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, '[W]orkspace [L]ist Folders')
+  -- See `:help K` for why this keymap
+  nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
+  vim.keymap.set('i', '<C-?>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature', noremap = true })
+  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  -- Lesser used LSP functionality
+  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
+  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+  nmap('<leader>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, '[W]orkspace [L]ist Folders')
 
-    -- Create a command `:Format` local to the LSP buffer
-    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-      vim.lsp.buf.format()
-    end, { desc = 'Format current buffer with LSP' })
-    nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-    nmap('<leader>C', vim.lsp.buf.code_action, '[C]ode action')
+  -- Create a command `:Format` local to the LSP buffer
+  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+    vim.lsp.buf.format()
+  end, { desc = 'Format current buffer with LSP' })
+  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+  nmap('<leader>C', vim.lsp.buf.code_action, '[C]ode action')
 
-    nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-    nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-    nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-    nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-    nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+  nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
-  if client.name == 'pyright' then
-    client.server_capabilities.signatureHelpProvider = false
-  end
-
-  if client.name == 'jedi_language_server' then
-    client.server_capabilities.hoverProvider = false
-    client.server_capabilities.completionProvider = false
-  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 return {
-  { 'williamboman/mason.nvim', opts = {}, event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
   {
     'williamboman/mason-lspconfig.nvim',
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
@@ -75,7 +66,7 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
-    event= { "BufReadPost", "BufNewFile", "BufWritePre" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     config = function()
       local lspconfig = require('lspconfig')
       lspconfig.pyright.setup {
@@ -97,10 +88,17 @@ return {
             },
           },
         },
+        filetypes = { 'python', 'snakemake' }
       }
       lspconfig.jedi_language_server.setup {
         capabilities = capabilities,
         on_attach = on_attach,
+        filetypes = { 'python', 'snakemake' },
+        init_options = {
+          diagnostics = { enable = false },
+          completion = { enable = false },
+          hover = { enable = false }
+        }
       }
       lspconfig.bashls.setup {
         capabilities = capabilities,
