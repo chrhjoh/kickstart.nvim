@@ -47,7 +47,7 @@ def verify_symlink_creation(destination: str):
 
 def main():
     args = parse_args()
-    for source_dir in ['config', 'dots']:
+    for source_dir in ['config']:
         destination_dir = args.config_dir if source_dir == 'config' else args.dotfile_dir
         source_dir = Path(DIR) / source_dir
         destination_dir = Path(destination_dir)
