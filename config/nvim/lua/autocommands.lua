@@ -6,3 +6,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+  pattern = {'Snakefile*', '*.smk'},
+  callback = function(args)
+    vim.diagnostic.disable(args.buf)
+    vim.api.nvim_buf_set_option(args.buf,'filetype', 'snakemake')
+  end
+})
+
