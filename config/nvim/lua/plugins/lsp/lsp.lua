@@ -39,6 +39,13 @@ local on_attach = function(client, bufnr)
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
+  if client.name == 'pyright' then
+    client.server_capabilities.signatureHelpProvider = false
+  end
+
+  if client.name == 'jedi_language_server' then
+    client.server_capabilities.completionProvider = false
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -96,7 +103,6 @@ return {
         filetypes = { 'python', 'snakemake' },
         init_options = {
           diagnostics = { enable = false },
-          completion = { enable = false },
           hover = { enable = false }
         }
       }
