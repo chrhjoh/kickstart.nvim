@@ -16,6 +16,7 @@ return {
             }
             null_ls.register(snakemake_formatter)
             null_ls.setup({
+                default_timeout = 10000,
                 sources = {
                     null_ls.builtins.formatting.black,
                 }
