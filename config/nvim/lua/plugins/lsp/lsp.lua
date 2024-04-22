@@ -46,6 +46,16 @@ local on_attach = function(client, bufnr)
   if client.name == 'jedi_language_server' then
     client.server_capabilities.completionProvider = false
   end
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    signs = {
+      severity = { min = vim.diagnostic.severity.INFO },
+    },
+    virtual_text = {
+      severity = { min = vim.diagnostic.severity.WARN },
+    },
+  }
+)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
