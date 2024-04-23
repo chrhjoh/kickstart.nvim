@@ -1,9 +1,10 @@
 return {
     {
         "nvimtools/none-ls.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
-        event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-        config = function()
+        dependencies = { "nvim-lua/plenary.nvim", "jay-babu/mason-null-ls.nvim"},
+        lazy = true,
+          event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+config = function()
             local null_ls = require('null-ls')
             local snakemake_formatter = {
                 method = null_ls.methods.FORMATTING,
@@ -29,10 +30,9 @@ return {
     },
     {
         "jay-babu/mason-null-ls.nvim",
-        event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+        lazy=true,
         dependencies = {
             "williamboman/mason.nvim",
-            "nvimtools/none-ls.nvim",
         },
     }
 }

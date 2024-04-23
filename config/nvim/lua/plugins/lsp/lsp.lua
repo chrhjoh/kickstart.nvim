@@ -64,7 +64,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 return {
   {
     'williamboman/mason-lspconfig.nvim',
-    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+   lazy = true,
     config = function()
       require('mason-lspconfig').setup {
         ensure_installed = {
@@ -79,11 +79,21 @@ return {
         },
         automatic_installation = true,
       }
-    end
+    end,
+    dependencies = {
+      'williamboman/mason.nvim',
+
+    }
   },
   {
     'neovim/nvim-lspconfig',
+    lazy = true,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    dependencies = {
+      {"folke/neodev.nvim", opts = {}},
+      'williamboman/mason-lspconfig.nvim'
+
+    },
     config = function()
       local lspconfig = require('lspconfig')
       lspconfig.pyright.setup {
