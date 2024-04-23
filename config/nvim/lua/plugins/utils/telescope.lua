@@ -19,7 +19,7 @@ return {
         require("telescope").load_extension('fzf')
       end
     },
-    {"fbuchlak/telescope-directory.nvim"}
+    { "fbuchlak/telescope-directory.nvim" }
   },
   config = function()
     require('telescope').setup {
@@ -83,7 +83,7 @@ return {
     }, {
     '<leader>sf',
     function()
-      require('telescope.builtin').find_files{no_ignore=true}
+      require('telescope.builtin').find_files { no_ignore = true }
     end,
     desc = '[S]earch all [F]iles'
   },
@@ -152,8 +152,8 @@ return {
       '<leader>sa',
       function()
         require('telescope.builtin').find_files {
-          no_ignore=true,
-          hidden=true,
+          no_ignore = true,
+          hidden = true,
         }
       end,
       desc = '[S]earch [A]ll files'
@@ -161,18 +161,28 @@ return {
     {
       "<Leader>sD",
       function()
-        require("telescope").extensions.directory.live_grep{}         -- find_files|grep_string|live_grep
+        require("telescope").extensions.directory.live_grep {} -- find_files|grep_string|live_grep
       end,
       desc = "[S]elect [D]irectory for Live Grep",
     },
     {
       "<Leader>sd",
       function()
-        require("telescope").extensions.directory.find_files{}         -- find_files|grep_string|live_grep
+        require("telescope").extensions.directory.find_files {} -- find_files|grep_string|live_grep
       end,
       desc = "[S]elect [D]irectory for Find Files",
     },
-
-
+    {
+      "<leader>sC",
+      function()
+        CONFIG_HOME = vim.env.XDG_CONFIG_HOME or vim.env.HOME .. "/.config"
+        local fk_opts = {
+          cwd = CONFIG_HOME,
+          results_title = "Config",
+        }
+        require("telescope.builtin").find_files(fk_opts)
+      end,
+      desc = "Fuzzy find [C]onfig files"
+    },
   }
 }
