@@ -175,7 +175,7 @@ return {
     {
       "<leader>sC",
       function()
-        CONFIG_HOME = vim.env.XDG_CONFIG_HOME or vim.env.HOME .. "/.config"
+        local CONFIG_HOME = vim.env.XDG_CONFIG_HOME or vim.env.HOME .. "/.config"
         local fk_opts = {
           cwd = CONFIG_HOME,
           results_title = "Config",
