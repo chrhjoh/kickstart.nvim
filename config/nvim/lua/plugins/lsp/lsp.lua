@@ -47,15 +47,18 @@ local on_attach = function(client, bufnr)
     client.server_capabilities.completionProvider = false
   end
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    signs = {
-      severity = { min = vim.diagnostic.severity.INFO },
-    },
-    virtual_text = {
-      severity = { min = vim.diagnostic.severity.WARN },
-    },
-  }
-)
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      signs = {
+        severity = { min = vim.diagnostic.severity.INFO },
+      },
+      virtual_text = {
+        severity = { min = vim.diagnostic.severity.WARN },
+      },
+    }
+  )
+  if vim.bo.filetype == 'snakemake' then
+    vim.diagnostic.disable(bufnr)
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -64,7 +67,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 return {
   {
     'williamboman/mason-lspconfig.nvim',
-   lazy = true,
+    lazy = true,
     config = function()
       require('mason-lspconfig').setup {
         ensure_installed = {
@@ -90,7 +93,7 @@ return {
     lazy = true,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     dependencies = {
-      {"folke/neodev.nvim", opts = {}},
+      { "folke/neodev.nvim", opts = {} },
       'williamboman/mason-lspconfig.nvim'
 
     },
