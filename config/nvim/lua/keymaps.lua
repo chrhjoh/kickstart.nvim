@@ -27,3 +27,7 @@ vim.keymap.set('n', 'y.', ':let @* = expand("%:t")<CR>', { desc = '[.] Copy File
 -- Moving between buffers
 vim.keymap.set('n', '<TAB>', ':bn<CR>', { desc = 'Next Buffer', silent = true })
 vim.keymap.set('n', '<S-TAB>', ':bp<CR>', { desc = 'Previous Buffer', silent = true })
+
+-- Moving over quickfix items quickly
+vim.keymap.set('n', '<C-n>', ':cn<CR>', { desc = 'Next item in list', silent = true })
+vim.keymap.set('n', '<C-p>', ':cp<CR>', { desc = 'Previous item in list', silent = true })
