@@ -15,7 +15,7 @@ return {
       ['<leader>gh'] = { name = '[G]it [H]unk', },
       ['<leader>r'] = { name = '[R]ename', },
       ['<leader>s'] = { name = '[S]earch', },
-      ['<leader>w'] = { name = '[W]orkspace', },
+      ['<leader>w'] = { name = '[W]indow', },
       ['<leader>d'] = { name = '[D]ebug', },
       ['<leader>o'] = { name = '[O]bsidian', },
       ['<leader>f'] = { name = '[F]iles', },
