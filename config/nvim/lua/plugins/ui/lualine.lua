@@ -28,10 +28,12 @@ return {
         },
         lualine_x = {
           {'copilot', show_colors=true},
-          'encoding',
           'filetype'
         },
-        lualine_y = { 'progress' },
+        lualine_y = { 
+          'progress', 
+          {"aerial",  colored = true,}
+        },
         lualine_z = { 'location' },
       }
     }

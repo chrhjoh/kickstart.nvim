@@ -19,25 +19,16 @@ local on_attach = function(client, bufnr)
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-  nmap('<leader>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace [L]ist Folders')
 
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
-  nmap('<leader>lr', vim.lsp.buf.rename, '[L]sp [R]ename')
-  nmap('<leader>C', vim.lsp.buf.code_action, '[C]ode action')
+  nmap('<leader>cr', vim.lsp.buf.rename, '[C]ode [R]ename')
+  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-  nmap('<leader>lD', require('telescope.builtin').lsp_type_definitions, 'Lsp Type [D]efinition')
-  nmap('<leader>ls', require('telescope.builtin').lsp_document_symbols, 'Lsp Document [S]ymbols')
-  nmap('<leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Lsp Workspace [S]ymbols')
+  nmap('<leader>cD', require('telescope.builtin').lsp_type_definitions, '[C]ode Type [D]efinition')
+  nmap('<leader>cs', require('telescope.builtin').lsp_document_symbols, '[C]ode Document [S]ymbols')
+  nmap('<leader>cS', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[Code] Workspace [S]ymbols')
 
   if client.name == 'pyright' then
     client.server_capabilities.signatureHelpProvider = false

@@ -44,10 +44,11 @@ return {
     }
     require("telescope").load_extension("persisted")
     require("telescope").load_extension("directory")
+    require("telescope").load_extension("aerial")
   end,
   keys = {
     {
-      '<leader>sc',
+      '<leader>sb',
       function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
         require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -55,7 +56,7 @@ return {
           previewer = false,
         })
       end,
-      desc = 'Fuzzily [S]earch in [C]urrent buffer'
+      desc = 'Fuzzily [S]earch in current [B]uffer'
     },
     {
       '<leader>s/',
@@ -75,31 +76,31 @@ return {
       desc = '[S]earch [S]essions'
     },
     {
-      '<leader>sF',
+      '<leader>gf',
       function()
         require('telescope.builtin').git_files()
       end,
-      desc = '[S]earch git [F]iles'
+      desc = '[G]it [F]ind'
     }, {
-    '<leader>sf',
+    '<leader>ff',
     function()
       require('telescope.builtin').find_files { no_ignore = true }
     end,
-    desc = '[S]earch all [F]iles'
+    desc = '[F]iles [F]ind'
   },
     {
-      '<leader>so',
+      '<leader>fr',
       function()
         require('telescope.builtin').oldfiles()
       end,
-      desc = '[S]earch [O]ld files'
+      desc = '[R]ecent [F]iles'
     },
     {
-      '<leader>sb',
+      '<leader>bf',
       function()
         require('telescope.builtin').buffers()
       end,
-      desc = '[S]earch Open [B]uffers'
+      desc = '[B]uffer [F]ind'
     },
     {
       '<leader>sh',
@@ -142,14 +143,14 @@ return {
       desc = '[S]earch [D]iagnostics'
     },
     {
-      '<leader>sr',
+      '<leader>sR',
       function()
         require('telescope.builtin').resume()
       end,
       desc = '[S]earch [R]esume'
     },
     {
-      '<leader>sa',
+      '<leader>fa',
       function()
         require('telescope.builtin').find_files {
           no_ignore = true,
@@ -159,21 +160,21 @@ return {
       desc = '[S]earch [A]ll files'
     },
     {
-      "<Leader>sD",
+      "<Leader>sd",
       function()
         require("telescope").extensions.directory.live_grep {} -- find_files|grep_string|live_grep
       end,
-      desc = "[S]elect [D]irectory for Live Grep",
+      desc = "[S]earch [D]irectory",
     },
     {
-      "<Leader>sd",
+      "<Leader>fd",
       function()
         require("telescope").extensions.directory.find_files {} -- find_files|grep_string|live_grep
       end,
-      desc = "[S]elect [D]irectory for Find Files",
+      desc = "[F]iles in [D]irectory",
     },
     {
-      "<leader>sC",
+      "<leader>fc",
       function()
         local CONFIG_HOME = vim.env.XDG_CONFIG_HOME or vim.env.HOME .. "/.config"
         local fk_opts = {
@@ -182,7 +183,26 @@ return {
         }
         require("telescope.builtin").find_files(fk_opts)
       end,
-      desc = "Fuzzy find [C]onfig files"
+      desc = "[F]ile [C]onfig"
+    },
+    { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+    { "<leader>sC", "<cmd>Telescope commands<cr>",        desc = "Commands" },
+    { "<leader>so", "<cmd>Telescope vim_options<cr>",     desc = "Options" },
+    {
+      "<leader>ss",
+      function()
+        require("telescope.builtin").lsp_document_symbols({
+        })
+      end,
+      desc = "Goto Symbol",
+    },
+    {
+      "<leader>sS",
+      function()
+        require("telescope.builtin").lsp_dynamic_workspace_symbols({
+        })
+      end,
+      desc = "Goto Symbol (Workspace)",
     },
   }
 }

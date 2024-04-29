@@ -1,31 +1,34 @@
-return { 
-    'folke/which-key.nvim',
-    config = function ()
-        require('which-key').setup {
+return {
+  'folke/which-key.nvim',
+  config = function()
+    require('which-key').setup {
       icons = {
         separator = '→',
       }
-        }
-        -- document existing key chains
-        require('which-key').register {
-          ['<leader>c'] = { name = '[C]opilot', _ = 'which_key_ignore' },
-          ['<leader>l'] = { name = '[L]sp', _ = 'which_key_ignore' },
-          ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-          ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
-          ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-          ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-          ['<leader>t'] = { name = 'Neo[T]ree', _ = 'which_key_ignore' },
-          ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-          ['<leader>d'] = { name = '[D]ebug', _ = 'which_key_ignore' },
-          ['<leader>o'] = { name = '[O]bsidian', _ = 'which_key_ignore' },
-        }
-        -- register which-key VISUAL mode
-        -- required for visual <leader>hs (hunk stage) to work
-        require('which-key').register({
-          ['<leader>'] = { name = 'VISUAL <leader>' },
-          ['<leader>h'] = { 'Git [H]unk' },
-          ['<leader>c'] = { '[C]opilot' },
-        }, { mode = 'v' })
-    end
-}
+    }
+    -- document existing key chains
+    require('which-key').register({
+      ['<leader>C'] = { name = '[C]opilot', },
+      ['<leader>c'] = { name = '[C]ode', },
+      ['<leader>l'] = { name = '[L]sp', },
+      ['<leader>g'] = { name = '[G]it', },
+      ['<leader>gh'] = { name = '[G]it [H]unk', },
+      ['<leader>r'] = { name = '[R]ename', },
+      ['<leader>s'] = { name = '[S]earch', },
+      ['<leader>w'] = { name = '[W]orkspace', },
+      ['<leader>d'] = { name = '[D]ebug', },
+      ['<leader>o'] = { name = '[O]bsidian', },
+      ['<leader>f'] = { name = '[F]iles', },
+      ['<leader>b'] = { name = '[B]uffers', },
+      ["<leader>x"] = { name = "+diagnostics/quickfix" },
+      ["g"] = { name = "+goto" },
+      ["gs"] = { name = "+surround" },
+      ["z"] = { name = "+fold" },
+      ["]"] = { name = "+next" },
+      ["["] = { name = "+prev" },
 
+
+
+    }, { mode = { 'n', 'v' } })
+  end
+}

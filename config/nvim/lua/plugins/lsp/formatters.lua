@@ -1,38 +1,49 @@
 return {
-    {
-        "nvimtools/none-ls.nvim",
-        dependencies = { "nvim-lua/plenary.nvim", "jay-babu/mason-null-ls.nvim"},
-        lazy = true,
-          event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-config = function()
-            local null_ls = require('null-ls')
-            local snakemake_formatter = {
-                method = null_ls.methods.FORMATTING,
-                filetypes = { "snakemake" },
-                generator = null_ls.formatter({
-                    command = { 'snakefmt' },
-                    args = { "$FILENAME" },
-                    to_temp_file = true,
-                })
-            }
-            null_ls.register(snakemake_formatter)
-            null_ls.setup({
-                default_timeout = 10000,
-                sources = {
-                    null_ls.builtins.formatting.black,
-                }
-            })
-            require("mason-null-ls").setup({
-                ensure_installed = { 'snakefmt' },
-                automatic_installation = true,
-            })
-        end
-    },
-    {
-        "jay-babu/mason-null-ls.nvim",
-        lazy=true,
-        dependencies = {
-            "williamboman/mason.nvim",
+    "stevearc/conform.nvim",
+    lazy = true,
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+        {
+            -- Customize or remove this keymap to your liking
+            "<leader>cf",
+            function()
+                require("conform").format({ async = true, lsp_fallback = true })
+            end,
+            mode = "",
+            desc = "Format buffer",
         },
-    }
+    },
+    -- Everything in opts will be passed to setup()
+    config = function()
+        require("conform").setup({
+            -- Define your formatters
+            formatters_by_ft = {
+                lua = { "stylua" },
+                python = { "isort", "black" },
+            },
+            -- Set up format-on-save
+            format_on_save = function(bufnr)
+                -- Disable with a global or buffer-local variable
+                if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+                    return
+                end
+                return { timeout_ms = 500, lsp_fallback = true }
+            end,
+            -- Customize formatters
+            formatters = {
+                snakefmt = {
+                    command = "snakefmt",
+                    args = "$FILENAME",
+                    stdin = false,
+                },
+            },
+        }
+        )
+        require("conform").formatters_by_ft.snakemake = { "snakefmt" }
+    end,
+    init = function()
+        -- If you want the formatexpr, here is the place to set it
+        vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
 }
