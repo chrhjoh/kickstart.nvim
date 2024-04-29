@@ -1,6 +1,6 @@
 return {
   "stevearc/aerial.nvim",
-  event = {"BufReadPost", "BufNewFile", "BufWritePre"},
+  event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   opts = function()
     -- HACK: fix lua's weird choice for `Package` for control
     -- structures like if/else/for/etc.
@@ -28,6 +28,6 @@ return {
     return opts
   end,
   keys = {
-    { "<leader>cs", "<cmd>AerialToggle<cr>", desc = "Aerial (Symbols)" },
+    { "<leader>cA", "<cmd>AerialToggle<cr>", desc = "Code Aerial (Symbols)" },
   },
-  }
+}

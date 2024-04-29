@@ -204,5 +204,11 @@ return {
       end,
       desc = "Goto Symbol (Workspace)",
     },
+
+    {
+      "<leader>sa",
+      "<cmd>Telescope aerial<cr>",
+      desc = "[S]earch Symbol ([A]erial)",
+    },
   }
 }
