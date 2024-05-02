@@ -4,20 +4,20 @@ return {
   -- See `:help lualine.txt`
   dependencies = {
     'nvim-tree/nvim-web-devicons',
-    'AndreM222/copilot-lualine' ,
-      },
-  event = {"BufReadPost", "BufNewFile", "BufWritePre"},
+    'AndreM222/copilot-lualine',
+  },
+  event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   config = function()
     require('lualine').setup {
       options = {
         theme = 'catppuccin',
         section_separators = '',
         component_separators = '|',
-        disabled_filetypes = {'alpha'},
+        disabled_filetypes = { 'alpha' },
       },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', {'diagnostics', sections = {'error', 'warn'}} },
+        lualine_b = { 'branch', 'diff', { 'diagnostics', sections = { 'error', 'warn' } } },
         lualine_c = {
           {
             'buffers',
@@ -27,12 +27,12 @@ return {
           }
         },
         lualine_x = {
-          {'copilot', show_colors=true},
+          { 'copilot', show_colors = true },
           'filetype'
         },
-        lualine_y = { 
-          'progress', 
-          {"aerial",  colored = true,}
+        lualine_y = {
+          'progress',
+          { "aerial", colored = true, }
         },
         lualine_z = { 'location' },
       }
