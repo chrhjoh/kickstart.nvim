@@ -87,6 +87,7 @@ function M.add_key_configurations(config)
 		{ key = 'q', mods = 'SUPER',        action = act.QuitApplication },
 		{ key = 'r', mods = 'SUPER',        action = act.ReloadConfiguration },
 		{ key = 'v', mods = 'SUPER',        action = act.PasteFrom 'Clipboard' },
+		{ key = 'v', mods = 'ALT',          action = act.PasteFrom 'PrimarySelection' },
 		{ key = 'k', mods = 'LEADER|SHIFT', action = act.CloseCurrentTab { confirm = true } },
 		{ key = 'k', mods = 'LEADER',       action = act.CloseCurrentPane { confirm = true } },
 		{ key = 'c', mods = 'LEADER',       action = act.SpawnTab 'CurrentPaneDomain' },

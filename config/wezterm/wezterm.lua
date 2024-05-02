@@ -17,6 +17,7 @@ keys.add_key_configurations(config)
 window.add_window_configurations(config)
 
 -- NEVER DEFINE SSH DOMAINS PUBLICLY
+-- open with wezterm connect unix
 config.unix_domains = {
 	{
 		-- The name; must be unique amongst all domains
