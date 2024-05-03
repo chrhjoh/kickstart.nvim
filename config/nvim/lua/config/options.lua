@@ -1,4 +1,3 @@
-
 vim.o.hlsearch = false
 
 -- Make line numbers default
@@ -41,5 +40,4 @@ vim.o.termguicolors = true
 vim.opt.conceallevel = 1
 
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winpos,winsize"
-vim.o.shell = 'bash'
 vim.o.laststatus = 0

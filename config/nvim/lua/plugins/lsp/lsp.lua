@@ -30,13 +30,6 @@ local on_attach = function(client, bufnr)
   nmap('<leader>cs', require('telescope.builtin').lsp_document_symbols, '[C]ode Document [S]ymbols')
   nmap('<leader>cS', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[Code] Workspace [S]ymbols')
 
-  if client.name == 'pyright' then
-    client.server_capabilities.signatureHelpProvider = false
-  end
-
-  if client.name == 'jedi_language_server' then
-    client.server_capabilities.completionProvider = false
-  end
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
       signs = {
@@ -63,7 +56,6 @@ return {
       require('mason-lspconfig').setup {
         ensure_installed = {
           'pyright',
-          'jedi_language_server',
           'bashls',
           'jsonls',
           'marksman',
@@ -110,15 +102,6 @@ return {
           },
         },
         filetypes = { 'python', 'snakemake' }
-      }
-      lspconfig.jedi_language_server.setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        filetypes = { 'python', 'snakemake' },
-        init_options = {
-          diagnostics = { enable = false },
-          hover = { enable = false }
-        }
       }
       lspconfig.bashls.setup {
         capabilities = capabilities,
