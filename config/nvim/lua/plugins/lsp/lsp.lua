@@ -112,16 +112,13 @@ return {
     lspconfig.sqlls.setup {
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = { root_dir = function() return vim.loop.cwd() end }
+      root_dir = function() return vim.loop.cwd() end
     }
     lspconfig.lua_ls.setup {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
         Lua = {
-          diagnostics = {
-            globals = { 'vim' }
-          },
           workspace = { checkThirdParty = false },
           telemetry = { enable = false },
           -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
