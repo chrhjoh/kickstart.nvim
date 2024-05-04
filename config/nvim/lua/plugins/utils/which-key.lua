@@ -21,6 +21,7 @@ return {
       ['<leader>f'] = { name = '+[F]iles', },
       ['<leader>b'] = { name = '+[B]uffers', },
       ["<leader>x"] = { name = "+diagnostics/quickfi[X]" },
+      ["<leader>t"] = { name = "+[T]erminal" },
       ["g"] = { name = "+goto" },
       ["gs"] = { name = "+surround" },
       ["z"] = { name = "+fold" },

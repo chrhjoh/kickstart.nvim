@@ -82,3 +82,9 @@ vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increa
 
 -- new file
 vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+
+vim.keymap.set('t', '<esc>', '<C-\\><C-N>')
+vim.keymap.set('t', '<C-h>', '<C-\\><C-N><C-h>')
+vim.keymap.set('t', '<C-j>', '<C-\\><C-N><C-j>')
+vim.keymap.set('t', '<C-k>', '<C-\\><C-N><C-k>')
+vim.keymap.set('t', '<C-l>', '<C-\\><C-N><C-l>')
