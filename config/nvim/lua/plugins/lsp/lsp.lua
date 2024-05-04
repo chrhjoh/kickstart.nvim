@@ -60,18 +60,18 @@ return {
   },
   config = function()
     require('mason-lspconfig').setup {
-      ensure_installed = {
-        'pyright',
-        'bashls',
-        'jsonls',
-        'marksman',
-        'yamlls',
-        'sqlls',
-        'lua_ls',
-      },
       automatic_installation = true,
     }
     local lspconfig = require('lspconfig')
+    lspconfig.julials.setup {
+      capabilities = capabilities,
+      on_attach = on_attach
+    }
+    lspconfig.rust_analyzer.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }
+
     lspconfig.pyright.setup {
       capabilities = capabilities,
       on_attach = on_attach,
@@ -109,10 +109,9 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
     }
-    lspconfig.sqlls.setup {
+    lspconfig.sqls.setup {
       capabilities = capabilities,
       on_attach = on_attach,
-      root_dir = function() return vim.loop.cwd() end
     }
     lspconfig.lua_ls.setup {
       capabilities = capabilities,
