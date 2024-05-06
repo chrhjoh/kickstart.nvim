@@ -13,7 +13,14 @@
           "foreground": "p:wight",
           "background": "p:blue",
           "leading_diamond": "\ue0b6",
-          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} "
+          "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}} "
+        },
+        {
+          "type": "session",
+          "background": "p:blue",
+          "foreground": "p:text",
+          "style": "diamond",
+          "template": "{{ if .SSHSession }}\ueba9 {{ end }}{{ .UserName }}@{{ .HostName }}"
         },
         {
           "type": "path",
@@ -78,13 +85,18 @@
             "fetch_virtual_env": true,
             "home_enabled": true
           }
-        },
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
         {
           "type": "executiontime",
           "style": "diamond",
-          "foreground": "p:text",
-          "background": "p:lavender",
-          "trailing_diamond": "\ue0b4",
+          "foreground": "p:os",
           "template": " \uf253 {{ .FormattedMs }}",
           "properties": {
             "always_enabled": true
@@ -93,7 +105,7 @@
         {
           "type": "text",
           "style": "plain",
-          "foreground": "p:green",
+          "foreground": "p:os",
           "template": " ❯ "
         }
       ],
