@@ -1,4 +1,4 @@
-# DotFiles (TO BE UPDATED WITH YADM)
+# DotFiles
 
 This repository contains my dotfiles for configuration of:
 
@@ -6,30 +6,17 @@ This repository contains my dotfiles for configuration of:
 * Command Prompt: [oh-my-posh](https://ohmyposh.dev/docs)
 * Window Manager: [Tmux](https://github.com/tmux/tmux)
 * Editor: [Neovim](https://github.com/neovim/neovim)
-
-## Requirements
-The programs above will have to be installed manually. Installations can be found from the link above. 
+* Shell: zsh ([oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh))
 
 ## Installation 
-The files can be cloned to the 
+This repository is managed by yadm and needs to be installed before. instructions for installing yadm can be found [here](https://yadm.io/docs/install#).
 
-on Linux and Mac
+After installing yadm, this repository can be cloned by running:
 ```sh
-git clone https://github.com/chrhjoh/dotfiles.git "${XDG_CONFIG_HOME:-$HOME/.config}"/dotfiles
+yadm clone https://github.com/chrhjoh/dotfiles.git
 ```
-After cloning the dotfiles can be linked to either `$XDG_CONFIG_HOME` or `$HOME` (See `bin/make_links.sh`) by the following command.
-Remember to back up current configurations that you want to save.
-
+A bootstrapping script is supplied for installing various applications on macOS using brew and the Brewfile in this repository. This has not been tested on any other OS and will likely not work.
+Bootstrapping can be done by:
 ```sh
-cd ${XDG_CONFIG_HOME:-$HOME/.config}"/dotfiles && bash bin/make_links.sh
-```
-
-### oh-my-posh
-The prompt theme can be added by adding it to your shell profile.
-
-See https://ohmyposh.dev/docs/installation/prompt for information on how
-
-The theme can be found at 
-```sh
-${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-posh/theme.json
+yadm bootstrap
 ```
