@@ -1,8 +1,8 @@
-# DotFiles
+# DotFiles (TO BE UPDATED WITH YADM)
 
 This repository contains my dotfiles for configuration of:
 
-* Terminal: [Kitty](https://sw.kovidgoyal.net/kitty/binary/)
+* Terminal: [Wezterm](https://github.com/wez/wezterm)
 * Command Prompt: [oh-my-posh](https://ohmyposh.dev/docs)
 * Window Manager: [Tmux](https://github.com/tmux/tmux)
 * Editor: [Neovim](https://github.com/neovim/neovim)
