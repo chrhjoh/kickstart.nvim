@@ -86,8 +86,7 @@
             "home_enabled": true
           }
         }
-      ],
-      "newline": true
+      ]
     },
     {
       "type": "prompt",
