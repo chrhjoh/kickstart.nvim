@@ -56,8 +56,8 @@
         },
         {
           "type": "command",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b6",
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4",
           "invert_powerline": true,
           "foreground": "p:text",
           "background": "p:pink",
@@ -69,12 +69,11 @@
         },
         {
           "type": "python",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b6",
-          "invert_powerline": true,
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4",
           "foreground": "p:text",
           "background": "#cba6f7",
-          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}  {{.Venv}}{{ end }}{{ end }}",
           "properties": {
             "fetch_virtual_env": true,
             "home_enabled": true
