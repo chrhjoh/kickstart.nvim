@@ -4,6 +4,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/theme.json)"
 
 EDITOR="nvim"
+DOCKER_CONFIG="$HOME/.config/docker"
 
 export PATH
 
