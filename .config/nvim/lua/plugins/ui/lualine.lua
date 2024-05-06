@@ -31,8 +31,9 @@ return {
           'filetype'
         },
         lualine_y = {
+          { "aerial", colored = true, },
           'progress',
-          { "aerial", colored = true, }
+
         },
         lualine_z = { 'location' },
       }
