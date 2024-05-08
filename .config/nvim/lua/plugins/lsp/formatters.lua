@@ -37,9 +37,22 @@ return {
                     args = "$FILENAME",
                     stdin = false,
                 },
+                black = {
+                    prepend_args = {
+                        "--line-length",
+                        "99",
+                    },
+                },
+                stylua = {
+                    prepend_args = {
+                        "--indent-type",
+                        "Spaces",
+                        "--indent-width",
+                        "4",
+                    },
+                },
             },
-        }
-        )
+        })
         require("conform").formatters_by_ft.snakemake = { "snakefmt" }
     end,
     init = function()
