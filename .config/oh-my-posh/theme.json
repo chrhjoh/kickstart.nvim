@@ -65,10 +65,9 @@
           "type": "command",
           "style": "diamond",
           "trailing_diamond": "\ue0b4",
-          "invert_powerline": true,
           "foreground": "p:text",
-          "background": "p:pink",
-          "template": " {{ .Output }} ",
+          "background": "p:green",
+          "template": " \uf489 {{ .Output }} ",
           "properties": {
             "command": "echo $PBS_JOBID | sed 's/^\\([0-9]*\\)\\..*$/\\1/'",
             "shell": "bash"
