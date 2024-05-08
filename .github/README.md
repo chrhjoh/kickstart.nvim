@@ -32,6 +32,10 @@ Bootstrapping can be done by:
 ```
 
 ## Usage
+Before using you may want to remove any untracked files for this repository
+```sh
+.git config --local status.showUntrackedFiles no
+```
 An alias is created to interact with the created git repo. This can be used to add, commit, revert etc as needed.
 As an example:
 ```sh
