@@ -41,7 +41,3 @@ vim.opt.conceallevel = 1
 
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winpos,winsize"
 vim.o.laststatus = 0
-
--- Set these to make vim fugitive and gitsigns work with bare dotfile directory
-vim.env.GIT_DIR = vim.env.DOTBARE_DIR
-vim.env.GIT_WORK_TREE = vim.env.DOTBARE_TREE
