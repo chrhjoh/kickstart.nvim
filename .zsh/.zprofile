@@ -6,6 +6,7 @@ eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/theme.json)"
 export EDITOR="nvim"
 export DOCKER_CONFIG="$HOME/.config/docker"
 
+# Set dir for dotfiles and config
 export DOTBARE_DIR="$HOME/.local/share/dotfiles/"
 export DOTBARE_TREE=$HOME
 alias gitdot="/usr/bin/git --git-dir=$DOTBARE_DIR --work-tree=$DOTBARE_TREE"
@@ -16,3 +17,5 @@ alias vi=nvim
 alias vim=nvim
 alias e=nvim
 
+# Setup paths
+path=($path "$HOME/.cargo/bin")

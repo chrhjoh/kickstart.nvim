@@ -30,7 +30,6 @@ Bootstrapping can be done by:
 ```sh
 ~/.bin/bootstrap.sh
 ```
-
 ## Usage
 Before using you may want to remove any untracked files for this repository
 ```sh
