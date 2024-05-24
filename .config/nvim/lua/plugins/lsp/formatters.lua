@@ -21,7 +21,7 @@ return {
                 -- Define your formatters
                 formatters_by_ft = {
                     lua = { "stylua" },
-                    python = { "isort", "black" },
+                    python = { "isort", "ruff_format" },
                     snakemake = { "snakefmt" },
                 },
                 -- Set up format-on-save
@@ -30,7 +30,7 @@ return {
                     if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
                         return
                     end
-                    return { timeout_ms = 2000, lsp_fallback = true }
+                    return { async = true, lsp_fallback = true }
                 end,
                 -- Customize formatters
                 formatters = {
@@ -50,7 +50,7 @@ return {
                             "--indent-type",
                             "Spaces",
                             "--indent-width",
-                            "4",
+                            "2",
                         },
                     },
                 },
