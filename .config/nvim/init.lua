@@ -27,4 +27,8 @@ require("lazy").setup({
     { import = "plugins.git" },
     { import = "plugins.lsp" },
     { import = "plugins.ai" },
-}, {})
+}, {
+    dev = {
+        path = "~/projects/nvim_plugins",
+    },
+})
