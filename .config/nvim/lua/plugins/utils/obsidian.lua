@@ -2,7 +2,7 @@ return {
   "epwalsh/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
-  cmd = "ObsidianOn",
+  cmd = { "ObsidianWorkspace", "ObsidianQuickSwitch" },
   ft = "markdown",
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   -- event = {
@@ -18,7 +18,7 @@ return {
     -- see below for full list of optional dependencies 👇
   },
   config = function()
-    require("obsidian").setup {
+    require("obsidian").setup({
       workspaces = {
         {
           name = "personal",
@@ -30,22 +30,37 @@ return {
         },
       },
       -- see below for full list of options 👇
-      mappings = {
-      }
-    }
-    vim.keymap.set('n', '<leader>of', '<cmd> lua require("obsidian").util.gf_passthrough()<CR>',
-      { noremap = false, expr = true, desc = '[O]bsidian [F]ollow' })
-    vim.keymap.set('n', '<leader>on', '<cmd>ObsidianNew<CR>',
-      { noremap = false, expr = true, desc = '[O]bsidian [N]ew Note' })
-    vim.keymap.set('n', '<leader>ot', '<cmd>ObsidianTemplate<CR>',
-      { noremap = false, expr = true, desc = '[O]bsidian [T]emplate' })
-    vim.keymap.set('n', '<leader>od', '<cmd>require("obsidian").util.toggle_checkbox()<CR>',
-      { noremap = false, expr = true, desc = '[O]bsidian [D]one' })
+      mappings = {},
+    })
+    vim.keymap.set(
+      "n",
+      "<leader>of",
+      '<cmd> lua require("obsidian").util.gf_passthrough()<CR>',
+      { noremap = false, expr = true, desc = "[O]bsidian [F]ollow" }
+    )
+    vim.keymap.set(
+      "n",
+      "<leader>on",
+      "<cmd>ObsidianNew<CR>",
+      { noremap = false, expr = true, desc = "[O]bsidian [N]ew Note" }
+    )
+    vim.keymap.set(
+      "n",
+      "<leader>ot",
+      "<cmd>ObsidianTemplate<CR>",
+      { noremap = false, expr = true, desc = "[O]bsidian [T]emplate" }
+    )
+    vim.keymap.set(
+      "n",
+      "<leader>od",
+      '<cmd>require("obsidian").util.toggle_checkbox()<CR>',
+      { noremap = false, expr = true, desc = "[O]bsidian [D]one" }
+    )
     vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "[O]pen in [O]bsidian App" })
     vim.keymap.set("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Show [O]bsidian[B]acklinks" })
     vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<CR>", { desc = "Show [O]bsidian[L]inks" })
     vim.keymap.set("n", "<leader>ow", "<cmd>ObsidianWorkspace<CR>", { desc = "Choose [O]bsidian [W]orkspaces" })
     vim.keymap.set("n", "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "[O]bsidian [Q]uick Switch" })
     vim.keymap.set("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "[O]bsidian [S]earch" })
-  end
+  end,
 }
