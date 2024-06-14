@@ -9,7 +9,7 @@ return {
         if term.direction == "horizontal" then
           return 15
         elseif term.direction == "vertical" then
-          return vim.o.columns * 0.3
+          return vim.o.columns * 0.25
         else
           return 60
         end
@@ -23,6 +23,7 @@ return {
       insert_mappings = true,
       terminal_mappings = true,
       persist_size = true,
+      persist_mode = false,
       direction = "float",
       close_on_exit = false,
       float_opts = {
