@@ -73,18 +73,27 @@ end, {
 })
 
 vim.api.nvim_create_user_command("ToggleDiagnostics", function()
-  if vim.diagnostic.is_disabled then
-    enabled = not vim.diagnostic.is_disabled()
-  end
-  local enabled = not enabled
-
-  if enabled then
+  if not vim.diagnostic.is_enabled() then
     vim.diagnostic.enable()
     print("Enabled diagnostics")
   else
-    vim.diagnostic.disable()
+    vim.diagnostic.enable(false)
     print("Disabled diagnostics")
   end
 end, {
   desc = "Toggle Diagnostics",
 })
+
+vim.api.nvim_create_user_command("BdeleteHigher", function()
+  vim.cmd('execute (bufnr("%") + 1) .. "," .. bufnr("$") .. "bd"')
+end, {})
+
+vim.api.nvim_create_user_command("BdeleteLower", function()
+  local curbuf = vim.fn.bufnr("%")
+  if curbuf > 1 then
+    -- Build the range string for buffers less than the current one
+    local range = "1," .. (curbuf - 1)
+    -- Execute the buffer delete command on the specified range
+    vim.cmd(range .. "bd")
+  end
+end, {})

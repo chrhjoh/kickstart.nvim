@@ -25,14 +25,15 @@ vim.keymap.set("n", "y.", ':let @* = expand("%:t")<CR>', { desc = "[.] Copy File
 -- Moving between buffers
 vim.keymap.set("n", "<TAB>", ":bn<CR>", { desc = "Next Buffer", silent = true })
 vim.keymap.set("n", "<S-TAB>", ":bp<CR>", { desc = "Previous Buffer", silent = true })
-vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 vim.keymap.set("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 vim.keymap.set("n", "<leader>bo", ':%bdelete|edit #|bd #"<cr>', { desc = "Delete all other buffers" })
-vim.keymap.set("n", "<leader>bd", ":bd<cr>", { desc = "Delete Current buffer" })
+vim.keymap.set("n", "<leader>bh", ":BdeleteHigher<cr>", { desc = "Delete buffers higher than current" })
+vim.keymap.set("n", "<leader>bl", ":BdeleteLower<cr>", { desc = "Delete buffers lower than current" })
+vim.keymap.set("n", "<leader>bd", "<cmd>silent! bp<bar>sp<bar>silent!bn<bar>bd<cr>", { desc = "Delete Current buffer" })
+vim.keymap.set("n", "<leader>bD", "<cmd>bd!<cr>", { desc = "Delete current buffer (discard changes)" })
 
 -- Moving over quickfix items quickly
 vim.keymap.set("n", "<C-n>", ":cn<CR>", { desc = "Next item in list", silent = true })
@@ -43,6 +44,8 @@ vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Sav
 
 vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
+vim.keymap.set("n", "<leader>xc", "<cmd>cclose<cr>", { desc = "Close quickfix List" })
+vim.keymap.set("n", "<leader>xC", "<cmd>lclose<cr>", { desc = "Close location List" })
 
 vim.keymap.set("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
@@ -69,6 +72,8 @@ vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "Split Window Below", remap
 vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split Window Right", remap = true })
 vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
+vim.keymap.set("n", "<leader>q", "<cmd>close<cr>", { desc = "Close current window" })
+vim.keymap.set("n", "<leader>Q", "<cmd>quit<cr>", { desc = "Quit Neovim" })
 
 -- Resize window using <ctrl> arrow keys
 vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
