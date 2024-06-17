@@ -32,26 +32,18 @@ return {
           end
           return { async = false, lsp_fallback = true }
         end,
-        -- Customize formatters
-        formatters = {
-          snakefmt = {
-            command = "snakefmt",
-            args = "$FILENAME",
-            stdin = false,
+        ruff_format = {
+          prepend_args = {
+            "--line-length",
+            "99",
           },
-          black = {
-            prepend_args = {
-              "--line-length",
-              "99",
-            },
-          },
-          stylua = {
-            prepend_args = {
-              "--indent-type",
-              "Spaces",
-              "--indent-width",
-              "2",
-            },
+        },
+        stylua = {
+          prepend_args = {
+            "--indent-type",
+            "Spaces",
+            "--indent-width",
+            "2",
           },
         },
       })
