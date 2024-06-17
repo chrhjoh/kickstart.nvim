@@ -13,7 +13,7 @@ export DOCKER_CONFIG="$HOME/.config/docker"
 # Set dir for dotfiles and config
 export DOTBARE_DIR="$HOME/.local/share/dotfiles/"
 export DOTBARE_TREE=$HOME
-alias gitdot="/usr/bin/git --git-dir=$DOTBARE_DIR --work-tree=$DOTBARE_TREE"
+alias .git="/usr/bin/git --git-dir=$DOTBARE_DIR --work-tree=$DOTBARE_TREE"
 
 
 alias vi=nvim

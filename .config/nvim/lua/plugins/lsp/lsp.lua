@@ -106,15 +106,19 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
     })
-    lspconfig.sqls.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
         Lua = {
+          format = {
+            enable = true,
+            defaultConfig = {
+              indent_style = "space",
+              indent_size = "2",
+            }
+          },
           workspace = { checkThirdParty = false },
           telemetry = { enable = false },
           -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings

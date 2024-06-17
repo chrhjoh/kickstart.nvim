@@ -20,7 +20,6 @@ return {
       require("conform").setup({
         -- Define your formatters
         formatters_by_ft = {
-          lua = { "stylua" },
           python = { "isort", "ruff_format" },
           snakemake = { "snakefmt" },
         },
@@ -36,14 +35,6 @@ return {
           prepend_args = {
             "--line-length",
             "99",
-          },
-        },
-        stylua = {
-          prepend_args = {
-            "--indent-type",
-            "Spaces",
-            "--indent-width",
-            "2",
           },
         },
       })
