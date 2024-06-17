@@ -64,6 +64,14 @@ return {
         },
       },
     },
+    git_status = {
+      window = {
+        mappings = {
+          ["A"] = "git_add_all",
+          ["gy"] = "git_unstage_file",
+        },
+      },
+    },
     default_component_configs = {
       indent = {
         with_expanders = true, -- if nil and file nesting is enabled, will enable expanders

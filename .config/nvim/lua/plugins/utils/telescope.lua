@@ -30,9 +30,6 @@ return {
       cond = function()
         return vim.fn.executable("make") == 1
       end,
-      config = function()
-        require("telescope").load_extension("fzf")
-      end,
     },
     { "fbuchlak/telescope-directory.nvim" },
   },
@@ -61,6 +58,7 @@ return {
     require("telescope").load_extension("persisted")
     require("telescope").load_extension("directory")
     require("telescope").load_extension("aerial")
+    require("telescope").load_extension("fzf")
   end,
   keys = {
     {
