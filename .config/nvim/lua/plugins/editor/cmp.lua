@@ -1,7 +1,7 @@
 return {
   -- Autocompletion
   'hrsh7th/nvim-cmp',
-  event='InsertEnter',
+  event = 'InsertEnter',
   dependencies = {
     -- Snippet Engine & its associated nvim-cmp source
     'L3MON4D3/LuaSnip',
@@ -11,10 +11,11 @@ return {
     'hrsh7th/cmp-nvim-lsp',
     "hrsh7th/cmp-buffer",
     'hrsh7th/cmp-path',
+    "f3fora/cmp-spell",
 
     -- Adds a number of user-friendly snippets
     'rafamadriz/friendly-snippets',
-    
+
     'onsails/lspkind.nvim'
 
 
@@ -66,12 +67,22 @@ return {
       sources = {
         { name = 'nvim_lsp', group_index = 1 },
         { name = 'path',     group_index = 2 },
-        { name = 'buffer',  group_index = 2 },
         { name = 'luasnip',  group_index = 3 },
+        { name = "spell", group_index = 3,
+          option = {
+            keep_all_entries = false,
+            enable_in_context = function()
+              return true
+            end,
+          },
+        },
+        { name = 'buffer', group_index = 5 },
+
       },
+
       formatting = {
         format = require('lspkind').cmp_format({
-          mode = "symbol",
+          mode = "symbol_text",
           max_width = 50,
           symbol_map = { Copilot = "" }
         })

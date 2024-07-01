@@ -6,3 +6,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = highlight_group,
   pattern = "*",
 })
+
+local spell_group = vim.api.nvim_create_augroup("Spell", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = spell_group,
+  pattern = { "*.md", "*.tex" },
+  command = "setlocal spell"
+})

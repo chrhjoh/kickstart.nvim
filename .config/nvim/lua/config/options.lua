@@ -43,3 +43,5 @@ vim.opt.shell = vim.env.SHELL .. " -l"
 
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winpos,winsize"
 vim.o.laststatus = 0
+
+vim.opt.spelllang = { "en_us" }

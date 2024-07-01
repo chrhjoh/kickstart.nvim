@@ -10,7 +10,6 @@ return {
         require("which-key").register({
             ["<leader>C"] = { name = "+[C]opilot" },
             ["<leader>c"] = { name = "+[C]ode" },
-            ["<leader>l"] = { name = "+[L]sp" },
             ["<leader>g"] = { name = "+[G]it" },
             ["<leader>gh"] = { name = "+[G]it [H]unk" },
             ["<leader>r"] = { name = "+[R]ename" },
@@ -23,6 +22,8 @@ return {
             ["<leader>x"] = { name = "+Diagnostics/quickfi[X]" },
             ["<leader>t"] = { name = "+[T]erminal" },
             ["<leader>u"] = { name = "+Toggle" },
+            ["<leader>l"] = { name = "+[L]atex" },
+
             ["g"] = { name = "+goto" },
             ["gs"] = { name = "+surround" },
             ["z"] = { name = "+fold" },

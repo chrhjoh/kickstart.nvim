@@ -15,6 +15,8 @@ export DOTBARE_DIR="$HOME/.local/share/dotfiles/"
 export DOTBARE_TREE=$HOME
 alias .git="/usr/bin/git --git-dir=$DOTBARE_DIR --work-tree=$DOTBARE_TREE"
 
+# For neovim and zathura to connect
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 
 alias vi=nvim
 alias vim=nvim
