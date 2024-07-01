@@ -31,12 +31,6 @@ return {
           end
           return { async = false, lsp_fallback = true }
         end,
-        ruff_format = {
-          prepend_args = {
-            "--line-length",
-            "99",
-          },
-        },
       })
       require("mason-conform").setup()
     end,
